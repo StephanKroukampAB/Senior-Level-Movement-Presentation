@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stephan Kroukamp | Senior Software Engineer</title>
+    <meta name="description" content="Senior Software Engineer motivation — Stephan Kroukamp @ Agile Bridge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== THEME VARIABLES ========== */
+        :root {
+            --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --transition-speed: 0.3s;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-card: #1c2128;
+            --bg-card-hover: #22272e;
+            --bg-terminal: #0a0e14;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-muted: #484f58;
+            --accent-green: #3fb950;
+            --accent-cyan: #58a6ff;
+            --accent-orange: #f0883e;
+            --accent-purple: #bc8cff;
+            --accent-red: #f85149;
+            --accent-yellow: #e3b341;
+            --border-color: #30363d;
+            --border-glow: rgba(88, 166, 255, 0.15);
+            --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+            --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.4);
+            --logo-filter: invert(1);
+            --stat-bg: rgba(56, 139, 253, 0.08);
+            --stat-border: rgba(56, 139, 253, 0.2);
+            --cert-check: #3fb950;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f6f8fa;
+            --bg-terminal: #f6f8fa;
+            --text-primary: #1f2328;
+            --text-secondary: #656d76;
+            --text-muted: #b1bac4;
+            --accent-green: #1a7f37;
+            --accent-cyan: #0969da;
+            --accent-orange: #bc4c00;
+            --accent-purple: #8250df;
+            --accent-red: #cf222e;
+            --accent-yellow: #9a6700;
+            --border-color: #d0d7de;
+            --border-glow: rgba(9, 105, 218, 0.1);
+            --shadow-card: 0 1px 4px rgba(0,0,0,0.08);
+            --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.12);
+            --logo-filter: none;
+            --stat-bg: rgba(9, 105, 218, 0.06);
+            --stat-border: rgba(9, 105, 218, 0.15);
+            --cert-check: #1a7f37;
+        }
+
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+        }
+
+        a { color: var(--accent-cyan); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ========== THEME TOGGLE ========== */
+        .theme-toggle {
+            position: fixed;
+            top: 1.25rem;
+            right: 1.25rem;
+            z-index: 1000;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-speed);
+            box-shadow: var(--shadow-card);
+        }
+        .theme-toggle:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 12px var(--border-glow);
+            transform: scale(1.1);
+        }
+        .theme-toggle svg { width: 20px; height: 20px; }
+        .theme-toggle .icon-sun,
+        [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-sun,
+        .theme-toggle .icon-moon { display: block; }
+
+        /* ========== NAV ========== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: background var(--transition-speed), border-color var(--transition-speed);
+        }
+        [data-theme="light"] .nav {
+            background: rgba(255, 255, 255, 0.85);
+        }
+        .nav-logo {
+            height: 28px;
+            filter: var(--logo-filter);
+            transition: filter var(--transition-speed);
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+            margin-left: auto;
+            margin-right: 3.5rem;
+        }
+        .nav-links a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: color var(--transition-speed);
+        }
+        .nav-links a:hover { color: var(--accent-green); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav { padding: 0.75rem 1rem; }
+        }
+
+        /* ========== CONTAINER ========== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ========== SECTION ========== */
+        section { padding: 5rem 0; }
+
+        .section-divider {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            opacity: 0.7;
+        }
+
+        .section-title {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 720px;
+        }
+
+        .terminal {
+            background: var(--bg-terminal);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            transition: border-color var(--transition-speed), background var(--transition-speed);
+        }
+
+        .terminal-header {
+            background: var(--bg-secondary);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background var(--transition-speed);
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-dot.red { background: #f85149; }
+        .terminal-dot.yellow { background: #e3b341; }
+        .terminal-dot.green { background: #3fb950; }
+
+        .terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-left: 0.5rem;
+        }
+
+        .terminal-body {
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            min-height: 280px;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-green);
+        }
+
+        .terminal-command {
+            color: var(--accent-cyan);
+        }
+
+        .terminal-output {
+            color: var(--text-primary);
+            padding-left: 0;
+        }
+
+        .terminal-flag {
+            color: var(--accent-orange);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.1em;
+            background: var(--accent-green);
+            vertical-align: text-bottom;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-tagline {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+
+        .tech-pill {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            transition: all var(--transition-speed);
+        }
+        .tech-pill:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* ========== STATS ========== */
+        .stats {
+            padding: 3rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            border-radius: 8px;
+            background: var(--stat-bg);
+            border: 1px solid var(--stat-border);
+            transition: all var(--transition-speed);
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px var(--border-glow);
+        }
+
+        .stat-number {
+            font-family: var(--font-mono);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ========== INTRO ========== */
+        .intro-text {
+            max-width: 750px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        .intro-text p { margin-bottom: 1.25rem; }
+
+        /* ========== PROJECT CARDS ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 3px solid var(--accent-cyan);
+            transition: all var(--transition-speed);
+            position: relative;
+        }
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent-cyan);
+            box-shadow: var(--shadow-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .project-card h3 .arrow {
+            color: var(--accent-cyan);
+            font-weight: 400;
+        }
+
+        .project-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        .tag-dotnet { background: rgba(81, 43, 212, 0.2); color: #a78bfa; }
+        .tag-azure { background: rgba(0, 120, 212, 0.2); color: #58a6ff; }
+        .tag-masstransit { background: rgba(46, 125, 50, 0.2); color: #4ade80; }
+        .tag-elastic { background: rgba(0, 188, 212, 0.2); color: #22d3ee; }
+        .tag-performance { background: rgba(240, 136, 62, 0.2); color: #fb923c; }
+        .tag-pipeline { background: rgba(248, 81, 73, 0.2); color: #f87171; }
+        .tag-ai { background: rgba(188, 140, 255, 0.2); color: #c084fc; }
+        .tag-architecture { background: rgba(227, 179, 65, 0.2); color: #fbbf24; }
+        .tag-delivery { background: rgba(63, 185, 80, 0.2); color: #4ade80; }
+        .tag-default { background: rgba(139, 148, 158, 0.15); color: var(--text-secondary); }
+
+        [data-theme="light"] .tag-dotnet { background: rgba(81, 43, 212, 0.1); color: #6d28d9; }
+        [data-theme="light"] .tag-azure { background: rgba(0, 120, 212, 0.1); color: #0969da; }
+        [data-theme="light"] .tag-masstransit { background: rgba(46, 125, 50, 0.1); color: #15803d; }
+        [data-theme="light"] .tag-elastic { background: rgba(0, 150, 170, 0.1); color: #0e7490; }
+        [data-theme="light"] .tag-performance { background: rgba(188, 76, 0, 0.1); color: #c2410c; }
+        [data-theme="light"] .tag-pipeline { background: rgba(207, 34, 46, 0.1); color: #b91c1c; }
+        [data-theme="light"] .tag-ai { background: rgba(130, 80, 223, 0.1); color: #7c3aed; }
+        [data-theme="light"] .tag-architecture { background: rgba(154, 103, 0, 0.1); color: #a16207; }
+        [data-theme="light"] .tag-delivery { background: rgba(26, 127, 55, 0.1); color: #15803d; }
+        [data-theme="light"] .tag-default { background: rgba(101, 109, 118, 0.1); color: #656d76; }
+
+        /* ========== PERSONAL PROJECTS — different accent ========== */
+        .personal .project-card {
+            border-left-color: var(--accent-purple);
+        }
+
+        /* ========== MENTORING ========== */
+        .mentoring-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mentoring-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            border-left: 3px solid var(--accent-orange);
+            transition: all var(--transition-speed);
+        }
+        .mentoring-item:hover {
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+
+        .mentoring-item h3 {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.35rem;
+        }
+
+        .mentoring-item p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ========== CERTIFICATIONS ========== */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 600px) {
+            .certs-grid { grid-template-columns: 1fr; }
+        }
+
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all var(--transition-speed);
+            position: relative;
+            overflow: hidden;
+        }
+        .cert-card:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 24px var(--border-glow);
+            transform: translateY(-4px);
+        }
+
+        .cert-check {
+            font-size: 1.5rem;
+            color: var(--cert-check);
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-code {
+            font-family: var(--font-mono);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-name {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ========== CLOSING ========== */
+        .closing {
+            padding: 4rem 0 3rem;
+        }
+
+        .closing-block {
+            background: var(--bg-terminal);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            max-width: 800px;
+        }
+
+        .closing-block .keyword {
+            color: var(--accent-purple);
+        }
+        .closing-block .string {
+            color: var(--accent-green);
+        }
+        .closing-block .comment {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .closing-prose {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 750px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            transition: border-color var(--transition-speed);
+        }
+
+        .footer-terminal {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== SCROLL ANIMATIONS ========== */
+        .animate {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-delay-1 { transition-delay: 0.1s; }
+        .animate-delay-2 { transition-delay: 0.2s; }
+        .animate-delay-3 { transition-delay: 0.3s; }
+        .animate-delay-4 { transition-delay: 0.4s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .animate { opacity: 1; transform: none; transition: none; }
+            .cursor { animation: none; opacity: 1; }
+            html { scroll-behavior: auto; }
+        }
+    </style>
+    <script>
+        // Prevent flash of wrong theme
+        (function() {
+            var t = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <img src="assets/agile-bridge-logo.png" alt="Agile Bridge" class="nav-logo">
+    <ul class="nav-links">
+        <li><a href="#stats">stats</a></li>
+        <li><a href="#architecture">architecture</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#mentoring">mentoring</a></li>
+        <li><a href="#certs">certs</a></li>
+    </ul>
+</nav>
+
+<!-- ===== THEME TOGGLE ===== -->
+<button class="theme-toggle" aria-label="Toggle theme">
+    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+    </svg>
+    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+</button>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="terminal">
+            <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">stephan@agile-bridge ~ career</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <div class="terminal-line">
+                    <span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-1"></span>
+                </div>
+                <div class="terminal-line terminal-output" id="out-1" style="display:none;"></div>
+                <div class="terminal-line" id="line-2" style="display:none;">
+                    <span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-2"></span>
+                </div>
+                <div class="terminal-line terminal-output" id="out-2" style="display:none;"></div>
+                <div class="terminal-line" id="line-3" style="display:none;">
+                    <span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-3"></span>
+                </div>
+                <div class="terminal-line terminal-output" id="out-3" style="display:none;"></div>
+                <div class="terminal-line" id="line-4" style="display:none;">
+                    <span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-4"></span>
+                </div>
+                <div id="out-4" style="display:none;"></div>
+                <span class="cursor" id="cursor"></span>
+            </div>
+        </div>
+        <div class="hero-tagline animate">
+            <div class="tech-stack">
+                <span class="tech-pill">.NET</span>
+                <span class="tech-pill">C#</span>
+                <span class="tech-pill">Azure</span>
+                <span class="tech-pill">MassTransit</span>
+                <span class="tech-pill">Elastic</span>
+                <span class="tech-pill">Docker</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats" id="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card animate">
+                <div class="stat-number" data-target="11" data-suffix="+">0</div>
+                <div class="stat-label">Major Systems</div>
+            </div>
+            <div class="stat-card animate animate-delay-1">
+                <div class="stat-number" data-target="20" data-suffix="+">0</div>
+                <div class="stat-label">APIs Upgraded</div>
+            </div>
+            <div class="stat-card animate animate-delay-2">
+                <div class="stat-number" data-target="3">0</div>
+                <div class="stat-label">Azure Certs</div>
+            </div>
+            <div class="stat-card animate animate-delay-3">
+                <div class="stat-number" data-target="0">0</div>
+                <div class="stat-label">Post-Deploy Fixes</div>
+            </div>
+            <div class="stat-card animate animate-delay-4">
+                <div class="stat-number" data-text="<2wk">&nbsp;</div>
+                <div class="stat-label">Remarketing Ship</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== INTRODUCTION ===== -->
+<section id="intro">
+    <div class="container">
+        <div class="section-divider animate">// introduction</div>
+        <div class="intro-text animate">
+            <p>Since my level movement to Solid Software Engineer, I have continued to push the boundaries of my technical ability and have taken on increasingly complex and impactful responsibilities. Where my previous journey was defined by rapid learning and growth, this next chapter has been defined by <strong style="color:var(--text-primary)">ownership, architectural decision-making, and driving technical direction</strong> across critical systems.</p>
+            <p>Working on the We Buy Cars project continues to present significant engineering challenges. The systems we maintain and evolve are high-volume, business-critical, and demand both deep technical skill and sound architectural judgement. I have embraced these challenges and consistently delivered solutions that have materially improved the reliability, performance, and maintainability of the platform.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ARCHITECTURE & TECHNICAL LEADERSHIP ===== -->
+<section id="architecture">
+    <div class="container">
+        <div class="section-divider animate">/* architecture_and_leadership */</div>
+        <h2 class="section-title animate">Architecture & Technical Leadership</h2>
+        <p class="section-subtitle animate">Systems designed, rebuilt, and shipped.</p>
+
+        <div class="projects-grid">
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> .NET 8 & .NET 10 Upgrades</h3>
+                <p>Led the .NET 8 and .NET 10 upgrades across BLMS. Reworked all HTTP integrations, authentication, Serilog and app config. Completed the same upgrades for 15-20 other APIs using BLMS as a template.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">.NET 8</span>
+                    <span class="tag tag-dotnet">.NET 10</span>
+                    <span class="tag tag-default">BLMS</span>
+                    <span class="tag tag-default">Migration</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Clean Architecture Consolidation</h3>
+                <p>Driving an ongoing consolidation across BLMS, collapsing four-layer Clean Architecture into a single streamlined layer — reducing complexity, removing unnecessary files, improving developer experience.</p>
+                <div class="tags">
+                    <span class="tag tag-architecture">Architecture</span>
+                    <span class="tag tag-dotnet">C#</span>
+                    <span class="tag tag-default">BLMS</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> MassTransit Refactor</h3>
+                <p>Replaced the MediatR-to-Service Bus subscription layer (SQL lookups) with direct MassTransit event publishing. Touched the core event-driven backbone — required simultaneous deployment of 6 microservices in production.</p>
+                <div class="tags">
+                    <span class="tag tag-masstransit">MassTransit</span>
+                    <span class="tag tag-azure">Azure Service Bus</span>
+                    <span class="tag tag-default">Event-Driven</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Elastic Search Sync Pipeline</h3>
+                <p>Rebuilt the entire Elastic Search syncing pipeline using Azure Service Bus session queues and MassTransit. Introduced an outbox table for deduplication — dramatically improving reliability and consistency.</p>
+                <div class="tags">
+                    <span class="tag tag-elastic">Elastic Search</span>
+                    <span class="tag tag-masstransit">MassTransit</span>
+                    <span class="tag tag-azure">Session Queues</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Lead Rollup System</h3>
+                <p>Designed the Lead Rollup system for buyer filters. Events fire on field changes to sync state. A stored procedure uses bitwise flag functions for the most performant BFF buyer filter calculation.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">C#</span>
+                    <span class="tag tag-performance">Performance</span>
+                    <span class="tag tag-default">Event-Driven</span>
+                    <span class="tag tag-default">Buyer Filters</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> TransUnion Catalogue Import</h3>
+                <p>Took full ownership of the fragile TransUnion pipeline. Rebuilt it from the ground up — used to take days with DB timeouts and deadlocks. Now finishes in an hour. Replaced costly API calls with monthly SFTP imports.</p>
+                <div class="tags">
+                    <span class="tag tag-performance">Days &#8594; 1 Hour</span>
+                    <span class="tag tag-dotnet">C#</span>
+                    <span class="tag tag-pipeline">Pipeline</span>
+                    <span class="tag tag-default">TransUnion</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> WeFin — Alerts & Contract Signing</h3>
+                <p>Implemented system alerts monitoring sales application volumes against thresholds. Integrated contract signing using request/response with MassTransit and Azure Service Bus. Went live with minimal issues.</p>
+                <div class="tags">
+                    <span class="tag tag-masstransit">MassTransit</span>
+                    <span class="tag tag-azure">Service Bus</span>
+                    <span class="tag tag-default">WeFin</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Remarketing API</h3>
+                <p>Designed and delivered before the December 2025 deadline. Pulls sales data for vehicles sold 2+ years ago, contacts previous sellers, auto-logs new leads. Since deployment: zero code fixes and substantial lead generation.</p>
+                <div class="tags">
+                    <span class="tag tag-delivery">Zero Fixes</span>
+                    <span class="tag tag-dotnet">.NET</span>
+                    <span class="tag tag-delivery">Rapid Delivery</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Inspectify</h3>
+                <p>Key role in architecting, designing, implementing, and taking Inspectify live within 1-2 months. Built with solid test coverage, clean code, and easy-to-onboard conventions. Production-ready quality at pace.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">C#</span>
+                    <span class="tag tag-architecture">Architecture</span>
+                    <span class="tag tag-delivery">Fast Delivery</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> AI-Powered Support Agent</h3>
+                <p>Designed and built an AI support agent combining four MCP sources: Serena (code analysis), Elastic (logs), Dynatrace (monitoring), and custom MCP for BLMS API access. Produces root cause analysis, fixes, and WhatsApp replies. Posts to Teams with pattern recognition over time.</p>
+                <div class="tags">
+                    <span class="tag tag-ai">AI / MCP</span>
+                    <span class="tag tag-elastic">Elastic</span>
+                    <span class="tag tag-default">Dynatrace</span>
+                    <span class="tag tag-default">Support Agent</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> MAHA Brake Test Integration</h3>
+                <p>Reverse-engineered German documentation from 1990s-era MAHA software. Built the ES_IN/ES_OUT file system integration with MassTransit Topics, subscriptions, and SQL filter rules per branch code. QR code scanning replaces manual processes.</p>
+                <div class="tags">
+                    <span class="tag tag-masstransit">MassTransit</span>
+                    <span class="tag tag-azure">Topics & Subscriptions</span>
+                    <span class="tag tag-ai">AI-Assisted</span>
+                    <span class="tag tag-default">MAHA</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== PERSONAL PROJECTS ===== -->
+<section id="projects" class="personal">
+    <div class="container">
+        <div class="section-divider animate">// side_projects</div>
+        <h2 class="section-title animate">Personal Projects & Continuous Learning</h2>
+        <p class="section-subtitle animate">Building beyond the day job.</p>
+
+        <div class="projects-grid">
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Full-Stack Architecture Project</h3>
+                <p>A passion project designed over many years, showcasing full-stack architecture and design. Exploring potential Agile Bridge involvement.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">Full-Stack</span>
+                    <span class="tag tag-dotnet">C#</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> SQL Explorer</h3>
+                <p>After switching to Mac and missing SSMS, built a native macOS SQL management tool with all essential features. Planned for internal release.</p>
+                <div class="tags">
+                    <span class="tag tag-default">macOS</span>
+                    <span class="tag tag-default">Tooling</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Azure Exam Simulator</h3>
+                <p>A Blazor app that OCRs PDF exam dumps into structured JSON, then renders a simulated exam UI for practice.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">Blazor</span>
+                    <span class="tag tag-azure">Azure Certs</span>
+                    <span class="tag tag-default">OCR</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Minesweeper VS Code Extension</h3>
+                <p>Built a fully functional Minesweeper game as a Visual Studio Code extension.</p>
+                <div class="tags">
+                    <span class="tag tag-default">VS Code</span>
+                    <span class="tag tag-default">Extension</span>
+                </div>
+            </div>
+
+            <div class="project-card animate">
+                <h3><span class="arrow">&#9656;</span> Cross-Platform .NET IDE</h3>
+                <p>Currently building a cross-platform .NET IDE — potentially web-based — pushing the boundaries of tooling development.</p>
+                <div class="tags">
+                    <span class="tag tag-dotnet">.NET</span>
+                    <span class="tag tag-default">IDE</span>
+                    <span class="tag tag-default">Cross-Platform</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===== KNOWLEDGE SHARING ===== -->
+<section id="mentoring">
+    <div class="container">
+        <div class="section-divider animate">/* mentoring && knowledge_sharing */</div>
+        <h2 class="section-title animate">Knowledge Sharing & Mentoring</h2>
+        <p class="section-subtitle animate">Uplifting the team through teaching.</p>
+
+        <div class="mentoring-list">
+            <div class="mentoring-item animate">
+                <h3>Fun Fact Thursday — MassTransit</h3>
+                <p>Presented a session covering how MassTransit serves as an abstraction layer for building distributed systems using transport brokers such as Azure Service Bus and RabbitMQ.</p>
+                <div class="tags" style="margin-top:0.5rem;">
+                    <span class="tag tag-masstransit">MassTransit</span>
+                    <span class="tag tag-default">Distributed Systems</span>
+                </div>
+            </div>
+            <div class="mentoring-item animate">
+                <h3>Backend Think Tank — Architecture Patterns</h3>
+                <p>Led a session on Vertical Slice Architecture vs Clean Architecture, driving a technical discussion on patterns and their trade-offs.</p>
+                <div class="tags" style="margin-top:0.5rem;">
+                    <span class="tag tag-architecture">Vertical Slice</span>
+                    <span class="tag tag-architecture">Clean Architecture</span>
+                </div>
+            </div>
+            <div class="mentoring-item animate">
+                <h3>Claude Code AI Training Workshop</h3>
+                <p>Designed and delivered a Claude Code AI Training Workshop for Agile Bridge and We Buy Cars, helping the broader team understand and adopt AI-assisted development workflows.</p>
+                <div class="tags" style="margin-top:0.5rem;">
+                    <span class="tag tag-ai">Claude Code</span>
+                    <span class="tag tag-default">Workshop</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certs">
+    <div class="container">
+        <div class="section-divider animate">// certifications.forEach(cert => display(cert))</div>
+        <h2 class="section-title animate">Certifications</h2>
+        <p class="section-subtitle animate">Microsoft Azure certified.</p>
+
+        <div class="certs-grid">
+            <div class="cert-card animate">
+                <div class="cert-check">&#10003;</div>
+                <div class="cert-code">AZ-900</div>
+                <div class="cert-name">Azure Fundamentals</div>
+            </div>
+            <div class="cert-card animate animate-delay-1">
+                <div class="cert-check">&#10003;</div>
+                <div class="cert-code">AZ-204</div>
+                <div class="cert-name">Azure Developer Associate</div>
+            </div>
+            <div class="cert-card animate animate-delay-2">
+                <div class="cert-check">&#10003;</div>
+                <div class="cert-code">AZ-400</div>
+                <div class="cert-name">Azure DevOps Engineer Expert</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+    <div class="container">
+        <div class="section-divider animate">// closing_statement</div>
+        <p class="closing-prose animate">I believe that I am ready for the level movement to Senior Software Engineer as set out by Agile Bridge. My contributions have evolved from feature implementation to driving architectural direction, taking ownership of critical and complex systems, and actively sharing knowledge to uplift those around me. I deliver work with ownership, precision, and a relentless focus on quality.</p>
+        <div class="closing-block animate">
+            <span class="comment">// status</span><br>
+            <span class="keyword">const</span> readiness = {<br>
+            &nbsp;&nbsp;role: <span class="string">"Senior Software Engineer"</span>,<br>
+            &nbsp;&nbsp;confidence: <span class="string">"ready"</span>,<br>
+            &nbsp;&nbsp;focus: [<span class="string">"ownership"</span>, <span class="string">"precision"</span>, <span class="string">"quality"</span>]<br>
+            };<br><br>
+            <span class="keyword">return</span> readiness;<span class="cursor"></span>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-terminal">
+            <span style="color:var(--accent-green)">stephan@github</span>:<span style="color:var(--accent-cyan)">~</span>$ <span style="color:var(--text-secondary)">exit</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+(function() {
+    // ===== THEME TOGGLE =====
+    const toggle = document.querySelector('.theme-toggle');
+    toggle.addEventListener('click', function() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+
+    // ===== TYPING ANIMATION =====
+    const lines = [
+        { cmd: 'cmd-1', text: 'whoami', out: 'out-1', outText: 'Stephan Kroukamp' },
+        { cmd: 'cmd-2', line: 'line-2', text: 'cat role.txt', out: 'out-2', outText: 'Senior Software Engineer Candidate @ Agile Bridge' },
+        { cmd: 'cmd-3', line: 'line-3', text: 'az certifications --list', out: 'out-3', outText: '\u2713 AZ-900  \u2713 AZ-204  \u2713 AZ-400' },
+        { cmd: 'cmd-4', line: 'line-4', text: 'git log --oneline | wc -l', out: 'out-4', outText: '11 systems architected \u00b7 3 certifications \u00b7 20+ APIs upgraded' },
+    ];
+
+    function typeText(el, text, speed) {
+        return new Promise(function(resolve) {
+            var i = 0;
+            function tick() {
+                if (i < text.length) {
+                    el.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(tick, speed);
+                } else {
+                    resolve();
+                }
+            }
+            tick();
+        });
+    }
+
+    async function runTerminal() {
+        var cursor = document.getElementById('cursor');
+        for (var idx = 0; idx < lines.length; idx++) {
+            var l = lines[idx];
+            if (l.line) document.getElementById(l.line).style.display = '';
+            await typeText(document.getElementById(l.cmd), l.text, 40);
+            await new Promise(function(r) { setTimeout(r, 300); });
+            var outEl = document.getElementById(l.out);
+            outEl.style.display = '';
+            outEl.textContent = l.outText;
+            await new Promise(function(r) { setTimeout(r, 200); });
+        }
+    }
+
+    runTerminal();
+
+    // ===== SCROLL REVEAL =====
+    var animEls = document.querySelectorAll('.animate');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    animEls.forEach(function(el) { observer.observe(el); });
+
+    // ===== COUNTER ANIMATION =====
+    var counters = document.querySelectorAll('.stat-number');
+    var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (!entry.isIntersecting) return;
+            var el = entry.target;
+            counterObserver.unobserve(el);
+
+            // Text-only stat
+            if (el.dataset.text) {
+                el.textContent = el.dataset.text;
+                return;
+            }
+
+            var target = parseInt(el.dataset.target, 10);
+            var suffix = el.dataset.suffix || '';
+
+            if (target === 0) {
+                el.textContent = '0';
+                return;
+            }
+
+            var duration = 1500;
+            var start = performance.now();
+            function step(now) {
+                var progress = Math.min((now - start) / duration, 1);
+                var ease = 1 - Math.pow(1 - progress, 3);
+                var current = Math.round(ease * target);
+                el.textContent = current + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    }, { threshold: 0.3 });
+    counters.forEach(function(c) { counterObserver.observe(c); });
+
+    // ===== SMOOTH SCROLL NAV =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+})();
+</script>
+</body>
+</html>
