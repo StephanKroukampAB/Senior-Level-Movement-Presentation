@@ -1,616 +1,485 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stephan Kroukamp | Senior Software Engineer</title>
-    <meta name="description" content="Senior Software Engineer motivation — Stephan Kroukamp @ Agile Bridge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
-            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --transition-speed: 0.3s;
-        }
-        [data-theme="dark"] {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --bg-card: #1c2128;
-            --bg-card-hover: #22272e;
-            --bg-terminal: #0a0e14;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --text-muted: #484f58;
-            --accent-green: #3fb950;
-            --accent-cyan: #58a6ff;
-            --accent-orange: #f0883e;
-            --accent-purple: #bc8cff;
-            --accent-red: #f85149;
-            --accent-yellow: #e3b341;
-            --border-color: #30363d;
-            --border-glow: rgba(88, 166, 255, 0.15);
-            --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
-            --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.4);
-            --stat-bg: rgba(56, 139, 253, 0.08);
-            --stat-border: rgba(56, 139, 253, 0.2);
-            --cert-check: #3fb950;
-            --highlight-bg: rgba(63, 185, 80, 0.06);
-            --highlight-border: rgba(63, 185, 80, 0.25);
-            --bar-track: #21262d;
-            --logo-filter: brightness(0) invert(1);
-        }
-        [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f6f8fa;
-            --bg-card: #ffffff;
-            --bg-card-hover: #f6f8fa;
-            --bg-terminal: #f6f8fa;
-            --text-primary: #1f2328;
-            --text-secondary: #656d76;
-            --text-muted: #b1bac4;
-            --accent-green: #1a7f37;
-            --accent-cyan: #0969da;
-            --accent-orange: #bc4c00;
-            --accent-purple: #8250df;
-            --accent-red: #cf222e;
-            --accent-yellow: #9a6700;
-            --border-color: #d0d7de;
-            --border-glow: rgba(9, 105, 218, 0.1);
-            --shadow-card: 0 1px 4px rgba(0,0,0,0.08);
-            --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.12);
-            --logo-filter: none;
-            --stat-bg: rgba(9, 105, 218, 0.06);
-            --stat-border: rgba(9, 105, 218, 0.15);
-            --cert-check: #1a7f37;
-            --highlight-bg: rgba(26, 127, 55, 0.04);
-            --highlight-border: rgba(26, 127, 55, 0.2);
-            --bar-track: #eaeef2;
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        body { font-family: var(--font-body); background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; transition: background var(--transition-speed), color var(--transition-speed); overflow-x: hidden; }
-        a { color: var(--accent-cyan); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stephan Kroukamp | Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root { --font: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace; --speed: 0.3s; }
+[data-theme="dark"] {
+    --bg: #1e1e1e; --bg2: #252526; --bg3: #2d2d2d; --bg4: #333333;
+    --sidebar: #181818; --tab-active: #1e1e1e; --tab-inactive: #2d2d2d;
+    --text: #d4d4d4; --text2: #808080; --text3: #5a5a5a;
+    --kw: #c586c0; --fn: #dcdcaa; --str: #ce9178; --num: #b5cea8;
+    --type: #4ec9b0; --var: #9cdcfe; --comment: #6a9955; --decorator: #dcdcaa;
+    --blue: #569cd6; --cyan: #4fc1ff; --orange: #ce9178; --green: #6a9955;
+    --purple: #c586c0; --yellow: #dcdcaa; --red: #f44747;
+    --border: #3c3c3c; --selection: rgba(38,79,120,0.5); --line-hl: rgba(255,255,255,0.04);
+    --gutter: #858585; --scrollbar: #424242; --badge: #4d4d4d;
+    --logo-filter: brightness(0) invert(1); --status-bg: #007acc;
+}
+[data-theme="light"] {
+    --bg: #ffffff; --bg2: #f3f3f3; --bg3: #ececec; --bg4: #e8e8e8;
+    --sidebar: #f8f8f8; --tab-active: #ffffff; --tab-inactive: #ececec;
+    --text: #1e1e1e; --text2: #6e7681; --text3: #b1b1b1;
+    --kw: #af00db; --fn: #795e26; --str: #a31515; --num: #098658;
+    --type: #267f99; --var: #0070c1; --comment: #008000; --decorator: #795e26;
+    --blue: #0000ff; --cyan: #0070c1; --orange: #a31515; --green: #008000;
+    --purple: #af00db; --yellow: #795e26; --red: #cd3131;
+    --border: #e0e0e0; --selection: rgba(173,214,255,0.5); --line-hl: rgba(0,0,0,0.03);
+    --gutter: #999999; --scrollbar: #c1c1c1; --badge: #e0e0e0;
+    --logo-filter: none; --status-bg: #007acc;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); font-size: 14px; background: var(--bg); color: var(--text); line-height: 1.6; transition: background var(--speed), color var(--speed); overflow-x: hidden; }
 
-        /* THEME TOGGLE */
-        .theme-toggle { position: fixed; top: 1.25rem; right: 1.25rem; z-index: 1000; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--bg-secondary); color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all var(--transition-speed); box-shadow: var(--shadow-card); }
-        .theme-toggle:hover { border-color: var(--accent-cyan); box-shadow: 0 0 12px var(--border-glow); transform: scale(1.1); }
-        .theme-toggle svg { width: 20px; height: 20px; }
-        .theme-toggle .icon-sun, [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-        [data-theme="dark"] .theme-toggle .icon-sun, .theme-toggle .icon-moon { display: block; }
+/* IDE LAYOUT */
+.ide { min-height: 100vh; display: flex; flex-direction: column; }
 
-        /* NAV */
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.75rem 2rem; display: flex; align-items: center; gap: 1.5rem; transition: background var(--transition-speed), border-color var(--transition-speed); }
-        [data-theme="light"] .nav { background: rgba(255, 255, 255, 0.85); }
-        .nav-logo { height: 56px; filter: var(--logo-filter); transition: filter var(--transition-speed); }
-        .nav-links { display: flex; gap: 1.25rem; list-style: none; margin-left: auto; margin-right: 3.5rem; }
-        .nav-links a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); transition: color var(--transition-speed); }
-        .nav-links a:hover { color: var(--accent-green); text-decoration: none; }
-        @media (max-width: 768px) { .nav-links { display: none; } .nav { padding: 0.75rem 1rem; } }
+/* TAB BAR */
+.tab-bar { position: sticky; top: 0; z-index: 100; display: flex; align-items: stretch; background: var(--bg2); border-bottom: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tab-bar::-webkit-scrollbar { height: 0; }
+.tab-logo { display: flex; align-items: center; padding: 0 1rem; border-right: 1px solid var(--border); }
+.tab-logo img { height: 20px; filter: var(--logo-filter); transition: filter var(--speed); }
+.tab { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; font-size: 0.8rem; color: var(--text2); cursor: pointer; border-right: 1px solid var(--border); white-space: nowrap; transition: all var(--speed); position: relative; text-decoration: none; }
+.tab:hover { color: var(--text); background: var(--bg3); }
+.tab.active { color: var(--text); background: var(--tab-active); }
+.tab.active::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--status-bg); }
+.tab .x { font-size: 0.7rem; color: var(--text3); margin-left: 0.3rem; opacity: 0; transition: opacity 0.2s; }
+.tab:hover .x { opacity: 1; }
+.tab-icon { font-size: 0.75rem; }
+.theme-btn { margin-left: auto; padding: 0 0.75rem; display: flex; align-items: center; cursor: pointer; color: var(--text2); border: none; background: none; font-family: var(--font); font-size: 0.75rem; transition: color var(--speed); }
+.theme-btn:hover { color: var(--text); }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
-        section { padding: 5rem 0; }
-        .section-divider { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; opacity: 0.7; }
-        .section-title { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
-        .section-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2.5rem; }
+/* EDITOR */
+.editor { flex: 1; max-width: 960px; margin: 0 auto; width: 100%; padding: 0 0 4rem; }
+.file-section { padding: 2rem 0; border-bottom: 1px solid var(--border); }
+.file-section:last-child { border-bottom: none; }
 
-        /* HERO */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 1.5rem 3rem; }
-        .hero-content { width: 100%; max-width: 720px; }
-        .terminal { background: var(--bg-terminal); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.4); transition: border-color var(--transition-speed), background var(--transition-speed); }
-        .terminal-header { background: var(--bg-secondary); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid var(--border-color); transition: background var(--transition-speed); }
-        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
-        .terminal-dot.red { background: #f85149; } .terminal-dot.yellow { background: #e3b341; } .terminal-dot.green { background: #3fb950; }
-        .terminal-title { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); margin-left: 0.5rem; }
-        .terminal-body { padding: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.8; min-height: 280px; }
-        .terminal-line { margin-bottom: 0.25rem; white-space: nowrap; overflow: hidden; }
-        .terminal-prompt { color: var(--accent-green); }
-        .terminal-command { color: var(--accent-cyan); }
-        .terminal-output { color: var(--text-primary); }
-        .cursor { display: inline-block; width: 8px; height: 1.1em; background: var(--accent-green); vertical-align: text-bottom; animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        .hero-tagline { text-align: center; margin-top: 2rem; font-size: 1rem; color: var(--text-secondary); }
-        .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; justify-content: center; }
-        .tech-pill { font-family: var(--font-mono); font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; border: 1px solid var(--border-color); color: var(--text-secondary); transition: all var(--transition-speed); }
-        .tech-pill:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+/* LINE NUMBERS + CODE LINES */
+.code-block { position: relative; }
+.ln { display: flex; min-height: 1.6em; }
+.ln:hover { background: var(--line-hl); }
+.ln-num { min-width: 3.5rem; padding-right: 1rem; text-align: right; color: var(--gutter); user-select: none; flex-shrink: 0; font-size: 0.85em; }
+.ln-code { flex: 1; padding-right: 1rem; overflow-wrap: break-word; }
+.ln-indent { padding-left: 2rem; }
+.ln-indent2 { padding-left: 4rem; }
 
-        /* STATS */
-        .stats { padding: 3rem 0; }
-        .stats-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
-        .stat-card { text-align: center; padding: 1.5rem 1rem; border-radius: 8px; background: var(--stat-bg); border: 1px solid var(--stat-border); transition: all var(--transition-speed); }
-        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 16px var(--border-glow); }
-        .stat-number { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--accent-cyan); line-height: 1.2; }
-        .stat-label { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.25rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        @media (max-width: 768px) { .stats-grid { grid-template-columns: repeat(3, 1fr); } }
-        @media (max-width: 480px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+/* SYNTAX COLORS */
+.kw { color: var(--kw); } /* keywords: const, export, function, class, return, if */
+.fn { color: var(--fn); } /* function names */
+.str { color: var(--str); } /* strings */
+.num { color: var(--num); } /* numbers */
+.type { color: var(--type); } /* types */
+.var { color: var(--var); } /* variables */
+.cm { color: var(--comment); font-style: italic; } /* comments */
+.dec { color: var(--decorator); } /* decorators */
+.bl { color: var(--blue); } /* blue keywords */
+.punc { color: var(--text); } /* punctuation */
+.tag-pill { display: inline; padding: 0; }
+.bracket { color: var(--yellow); }
 
-        /* DEVOPS DASHBOARD */
-        .dashboard-period { margin-bottom: 3rem; }
-        .period-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem; }
-        .period-badge { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-        .period-badge.highlight { background: var(--accent-green); color: #0d1117; }
-        .period-badge.historic { background: var(--text-muted); color: var(--bg-primary); }
-        .period-title { font-family: var(--font-mono); font-size: 1.1rem; font-weight: 600; }
-        .period-dates { font-size: 0.8rem; color: var(--text-muted); }
-        .dashboard-highlight { background: var(--highlight-bg); border: 1px solid var(--highlight-border); border-radius: 10px; padding: 2rem; margin-bottom: 3rem; }
-        .dash-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
-        .dash-stat { text-align: center; }
-        .dash-stat-number { font-family: var(--font-mono); font-size: 1.8rem; font-weight: 700; color: var(--accent-green); }
-        .dash-stat-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 0.15rem; }
-        .repo-breakdown { margin-top: 1.5rem; }
-        .repo-breakdown h4 { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
-        .repo-bar { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; font-size: 0.8rem; }
-        .repo-bar-name { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); min-width: 120px; text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .repo-bar-track { flex: 1; height: 8px; background: var(--bar-track); border-radius: 4px; overflow: hidden; }
-        .repo-bar-fill { height: 100%; border-radius: 4px; transition: width 1.5s ease; }
-        .repo-bar-fill.primary { background: var(--accent-cyan); }
-        .repo-bar-fill.secondary { background: var(--accent-purple); }
-        .repo-bar-fill.tertiary { background: var(--accent-orange); }
-        .repo-bar-fill.quaternary { background: var(--accent-green); }
-        .repo-bar-fill.quinary { background: var(--accent-yellow); }
-        .repo-bar-fill.senary { background: var(--accent-red); }
-        .repo-bar-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); min-width: 40px; }
-        .dash-historic .dash-stat-number { color: var(--accent-cyan); }
-        @media (max-width: 768px) { .dash-stats { grid-template-columns: repeat(2, 1fr); } .repo-bar-name { min-width: 80px; font-size: 0.65rem; } }
-        @media (max-width: 480px) { .dash-stats { grid-template-columns: 1fr; } }
+/* CARDS as CODE */
+.code-card { margin: 0.25rem 0; padding: 0.25rem 0; border-radius: 0; transition: background 0.2s; }
+.code-card:hover { background: var(--selection); }
 
-        /* INTRO */
-        .intro-text { max-width: 750px; font-size: 1rem; line-height: 1.8; color: var(--text-secondary); }
-        .intro-text p { margin-bottom: 1.25rem; }
+/* COUNTER ANIMATION */
+.counter { color: var(--num); font-weight: 700; }
 
-        /* PROJECT CARDS */
-        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-        @media (max-width: 768px) { .projects-grid { grid-template-columns: 1fr; } }
-        .project-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; border-left: 3px solid var(--accent-cyan); transition: all var(--transition-speed); position: relative; }
-        .project-card:hover { background: var(--bg-card-hover); border-color: var(--accent-cyan); box-shadow: var(--shadow-card-hover); transform: translateY(-2px); }
-        .project-card h3 { font-family: var(--font-mono); font-size: 0.95rem; font-weight: 600; color: var(--accent-green); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
-        .project-card h3 .arrow { color: var(--accent-cyan); font-weight: 400; }
-        .project-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.75rem; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .tag { font-family: var(--font-mono); font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 4px; font-weight: 500; letter-spacing: 0.02em; }
-        .tag-dotnet { background: rgba(81, 43, 212, 0.2); color: #a78bfa; }
-        .tag-azure { background: rgba(0, 120, 212, 0.2); color: #58a6ff; }
-        .tag-masstransit { background: rgba(46, 125, 50, 0.2); color: #4ade80; }
-        .tag-elastic { background: rgba(0, 188, 212, 0.2); color: #22d3ee; }
-        .tag-performance { background: rgba(240, 136, 62, 0.2); color: #fb923c; }
-        .tag-pipeline { background: rgba(248, 81, 73, 0.2); color: #f87171; }
-        .tag-ai { background: rgba(188, 140, 255, 0.2); color: #c084fc; }
-        .tag-architecture { background: rgba(227, 179, 65, 0.2); color: #fbbf24; }
-        .tag-delivery { background: rgba(63, 185, 80, 0.2); color: #4ade80; }
-        .tag-default { background: rgba(139, 148, 158, 0.15); color: var(--text-secondary); }
-        [data-theme="light"] .tag-dotnet { background: rgba(81, 43, 212, 0.1); color: #6d28d9; }
-        [data-theme="light"] .tag-azure { background: rgba(0, 120, 212, 0.1); color: #0969da; }
-        [data-theme="light"] .tag-masstransit { background: rgba(46, 125, 50, 0.1); color: #15803d; }
-        [data-theme="light"] .tag-elastic { background: rgba(0, 150, 170, 0.1); color: #0e7490; }
-        [data-theme="light"] .tag-performance { background: rgba(188, 76, 0, 0.1); color: #c2410c; }
-        [data-theme="light"] .tag-pipeline { background: rgba(207, 34, 46, 0.1); color: #b91c1c; }
-        [data-theme="light"] .tag-ai { background: rgba(130, 80, 223, 0.1); color: #7c3aed; }
-        [data-theme="light"] .tag-architecture { background: rgba(154, 103, 0, 0.1); color: #a16207; }
-        [data-theme="light"] .tag-delivery { background: rgba(26, 127, 55, 0.1); color: #15803d; }
-        [data-theme="light"] .tag-default { background: rgba(101, 109, 118, 0.1); color: #656d76; }
-        .personal .project-card { border-left-color: var(--accent-purple); }
-        .group-heading { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
+/* CONSOLE TABLE */
+.console-table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; font-size: 0.85em; }
+.console-table th { color: var(--text2); text-align: left; padding: 0.25rem 1rem 0.25rem 0; border-bottom: 1px solid var(--border); font-weight: 400; }
+.console-table td { padding: 0.25rem 1rem 0.25rem 0; border-bottom: 1px solid var(--border); }
+.console-table td.num-cell { color: var(--num); text-align: right; }
 
-        /* MENTORING */
-        .mentoring-list { display: flex; flex-direction: column; gap: 1rem; }
-        .mentoring-item { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem 1.5rem; border-left: 3px solid var(--accent-orange); transition: all var(--transition-speed); }
-        .mentoring-item:hover { background: var(--bg-card-hover); transform: translateX(4px); }
-        .mentoring-item h3 { font-family: var(--font-mono); font-size: 0.9rem; color: var(--accent-orange); margin-bottom: 0.35rem; }
-        .mentoring-item p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; }
+/* REPO BARS */
+.repo-row { display: flex; align-items: center; gap: 0.5rem; margin: 0.15rem 0; font-size: 0.85em; }
+.repo-name { color: var(--str); min-width: 110px; text-align: right; }
+.repo-track { flex: 1; height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; }
+.repo-fill { height: 100%; border-radius: 3px; transition: width 1.5s ease; }
+.repo-fill.c1 { background: var(--blue); } .repo-fill.c2 { background: var(--purple); }
+.repo-fill.c3 { background: var(--orange); } .repo-fill.c4 { background: var(--green); }
+.repo-fill.c5 { background: var(--yellow); }
+.repo-ct { color: var(--num); min-width: 35px; text-align: right; font-size: 0.8em; }
 
-        /* CERTS */
-        .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-        @media (max-width: 600px) { .certs-grid { grid-template-columns: 1fr; } }
-        .cert-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 2rem 1.5rem; text-align: center; transition: all var(--transition-speed); }
-        .cert-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 24px var(--border-glow); transform: translateY(-4px); }
-        .cert-check { font-size: 1.5rem; color: var(--cert-check); margin-bottom: 0.5rem; }
-        .cert-code { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.25rem; }
-        .cert-name { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+/* TERMINAL (hero) */
+.terminal { background: var(--sidebar); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin: 2rem 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+.terminal-header { background: var(--bg3); padding: 0.5rem 0.75rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid var(--border); }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.r { background: #f44747; } .dot.y { background: #e3b341; } .dot.g { background: #3fb950; }
+.terminal-title { font-size: 0.7rem; color: var(--text2); margin-left: 0.5rem; }
+.terminal-body { padding: 1rem; font-size: 0.85rem; line-height: 1.8; min-height: 250px; }
+.t-prompt { color: var(--green); }
+.t-cmd { color: var(--cyan); }
+.t-out { color: var(--text); }
+.t-line { margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; }
+.cursor { display: inline-block; width: 7px; height: 1em; background: var(--green); vertical-align: text-bottom; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; justify-content: center; margin: 1.5rem 1.5rem 0; }
+.pill { font-size: 0.75rem; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 3px; color: var(--text2); }
 
-        /* CLOSING */
-        .closing { padding: 4rem 0 3rem; }
-        .closing-block { background: var(--bg-terminal); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.8; color: var(--text-secondary); max-width: 800px; }
-        .closing-block .keyword { color: var(--accent-purple); }
-        .closing-block .string { color: var(--accent-green); }
-        .closing-block .comment { color: var(--text-muted); font-style: italic; }
-        .closing-prose { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 2rem; max-width: 750px; }
+/* STATUS BAR */
+.status-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 100; background: var(--status-bg); color: #fff; font-size: 0.7rem; padding: 0.2rem 1rem; display: flex; justify-content: space-between; }
+.status-bar span { opacity: 0.9; }
 
-        /* FOOTER */
-        footer { border-top: 1px solid var(--border-color); padding: 2rem 0; text-align: center; transition: border-color var(--transition-speed); }
-        .footer-terminal { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
+/* ANIMATIONS */
+.anim { opacity: 0; transform: translateY(12px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.anim.visible { opacity: 1; transform: translateY(0); }
+@media(prefers-reduced-motion:reduce) { .anim { opacity:1; transform:none; transition:none; } .cursor { animation:none; opacity:1; } html { scroll-behavior:auto; } }
 
-        /* ANIMATIONS */
-        .animate { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-        .animate.visible { opacity: 1; transform: translateY(0); }
-        .animate-delay-1 { transition-delay: 0.1s; } .animate-delay-2 { transition-delay: 0.2s; } .animate-delay-3 { transition-delay: 0.3s; } .animate-delay-4 { transition-delay: 0.4s; }
-        @media (prefers-reduced-motion: reduce) { .animate { opacity: 1; transform: none; transition: none; } .cursor { animation: none; opacity: 1; } html { scroll-behavior: auto; } }
-    </style>
-    <script>(function(){ var t = localStorage.getItem('theme') || 'dark'; document.documentElement.setAttribute('data-theme', t); })();</script>
+/* RESPONSIVE */
+@media(max-width:768px) {
+    .ln-num { min-width: 2.5rem; font-size: 0.75em; }
+    .tab-bar { font-size: 0.75rem; }
+    .terminal { margin: 1rem; }
+    .editor { padding: 0 0.5rem; }
+    .repo-name { min-width: 70px; font-size: 0.75em; }
+}
+</style>
+<script>(function(){ document.documentElement.setAttribute('data-theme', localStorage.getItem('theme')||'dark'); })();</script>
 </head>
 <body>
+<div class="ide">
 
-<nav class="nav">
-    <img src="assets/agile-bridge-logo.png" alt="Agile Bridge" class="nav-logo">
-    <ul class="nav-links">
-        <li><a href="#intro">intro</a></li>
-        <li><a href="#devops">devops</a></li>
-        <li><a href="#architecture">architecture</a></li>
-        <li><a href="#projects">projects</a></li>
-        <li><a href="#mentoring">mentoring</a></li>
-        <li><a href="#certs">certs</a></li>
-    </ul>
-</nav>
+<!-- TAB BAR -->
+<div class="tab-bar">
+    <div class="tab-logo"><img src="assets/agile-bridge-logo.png" alt="AB"></div>
+    <a href="#hero" class="tab active" data-section="hero"><span class="tab-icon">&#9658;</span> main.ts <span class="x">&times;</span></a>
+    <a href="#intro" class="tab" data-section="intro"><span class="tab-icon">&#128196;</span> intro.md <span class="x">&times;</span></a>
+    <a href="#devops" class="tab" data-section="devops"><span class="tab-icon">&#9881;</span> devops.ts <span class="x">&times;</span></a>
+    <a href="#architecture" class="tab" data-section="architecture"><span class="tab-icon">&#128230;</span> architecture.ts <span class="x">&times;</span></a>
+    <a href="#projects" class="tab" data-section="projects"><span class="tab-icon">&#128187;</span> projects.ts <span class="x">&times;</span></a>
+    <a href="#mentoring" class="tab" data-section="mentoring"><span class="tab-icon">&#128218;</span> mentoring.log <span class="x">&times;</span></a>
+    <a href="#certs" class="tab" data-section="certs"><span class="tab-icon">&#127891;</span> certs.ts <span class="x">&times;</span></a>
+    <button class="theme-btn" id="themeToggle">&#9788;/&#9790;</button>
+</div>
 
-<button class="theme-toggle" aria-label="Toggle theme">
-    <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-    <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-</button>
-
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="terminal">
-            <div class="terminal-header">
-                <span class="terminal-dot red"></span>
-                <span class="terminal-dot yellow"></span>
-                <span class="terminal-dot green"></span>
-                <span class="terminal-title">stephan@agile-bridge ~ career</span>
-            </div>
-            <div class="terminal-body" id="terminal-body">
-                <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-1"></span></div>
-                <div class="terminal-line terminal-output" id="out-1" style="display:none;"></div>
-                <div class="terminal-line" id="line-2" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-2"></span></div>
-                <div class="terminal-line terminal-output" id="out-2" style="display:none;"></div>
-                <div class="terminal-line" id="line-3" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-3"></span></div>
-                <div class="terminal-line terminal-output" id="out-3" style="display:none;"></div>
-                <div class="terminal-line" id="line-4" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-4"></span></div>
-                <div class="terminal-line terminal-output" id="out-4" style="display:none;"></div>
-                <div class="terminal-line" id="line-5" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-5"></span></div>
-                <div class="terminal-line terminal-output" id="out-5" style="display:none;"></div>
-                <span class="cursor" id="cursor"></span>
-            </div>
+<!-- HERO / main.ts -->
+<section id="hero" class="file-section" style="padding-top:0;">
+    <div class="terminal anim">
+        <div class="terminal-header">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="terminal-title">stephan@agile-bridge:~/career</span>
         </div>
-        <div class="hero-tagline animate">
-            <div class="tech-stack">
-                <span class="tech-pill">.NET</span>
-                <span class="tech-pill">C#</span>
-                <span class="tech-pill">Azure</span>
-                <span class="tech-pill">MassTransit</span>
-                <span class="tech-pill">Elastic</span>
-                <span class="tech-pill">Docker</span>
-            </div>
+        <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd" id="c1"></span></div>
+            <div class="t-line t-out" id="o1" style="display:none"></div>
+            <div class="t-line" id="l2" style="display:none"><span class="t-prompt">$</span> <span class="t-cmd" id="c2"></span></div>
+            <div class="t-line t-out" id="o2" style="display:none"></div>
+            <div class="t-line" id="l3" style="display:none"><span class="t-prompt">$</span> <span class="t-cmd" id="c3"></span></div>
+            <div class="t-line t-out" id="o3" style="display:none"></div>
+            <div class="t-line" id="l4" style="display:none"><span class="t-prompt">$</span> <span class="t-cmd" id="c4"></span></div>
+            <div class="t-line t-out" id="o4" style="display:none"></div>
+            <div class="t-line" id="l5" style="display:none"><span class="t-prompt">$</span> <span class="t-cmd" id="c5"></span></div>
+            <div class="t-line t-out" id="o5" style="display:none"></div>
+            <span class="cursor"></span>
+        </div>
+    </div>
+    <div class="hero-pills anim">
+        <span class="pill">.NET</span><span class="pill">C#</span><span class="pill">Azure</span><span class="pill">MassTransit</span><span class="pill">Elastic</span><span class="pill">Docker</span>
+    </div>
+</section>
+
+<!-- STATS as code -->
+<section class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// stats.ts — all-time production numbers</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code"><span class="kw">const</span> <span class="var">prodCommits</span>: <span class="type">number</span> = <span class="counter" data-target="3412">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsShipped</span>: <span class="type">number</span> = <span class="counter" data-target="666">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsReviewed</span>: <span class="type">number</span> = <span class="counter" data-target="1074">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="kw">const</span> <span class="var">workItemsClosed</span>: <span class="type">number</span> = <span class="counter" data-target="802">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code"><span class="kw">const</span> <span class="var">repositories</span>: <span class="type">number</span> = <span class="counter" data-target="6">0</span>;</span></div>
         </div>
     </div>
 </section>
 
-<!-- STATS -->
-<section class="stats" id="stats">
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card animate"><div class="stat-number" data-target="3412">0</div><div class="stat-label">Prod Commits</div></div>
-            <div class="stat-card animate animate-delay-1"><div class="stat-number" data-target="666">0</div><div class="stat-label">PRs Shipped</div></div>
-            <div class="stat-card animate animate-delay-2"><div class="stat-number" data-target="1074">0</div><div class="stat-label">PRs Reviewed</div></div>
-            <div class="stat-card animate animate-delay-3"><div class="stat-number" data-target="802">0</div><div class="stat-label">Work Items Closed</div></div>
-            <div class="stat-card animate animate-delay-4"><div class="stat-number" data-target="6">0</div><div class="stat-label">Repositories</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- INTRODUCTION -->
-<section id="intro">
-    <div class="container">
-        <div class="section-divider animate">// introduction</div>
-        <div class="intro-text animate">
-            <p>Since my level movement to Solid Software Engineer, I have continued to push the boundaries of my technical ability and have taken on increasingly complex and impactful responsibilities. Where my previous journey was defined by rapid learning and growth, this next chapter has been defined by <strong style="color:var(--text-primary)">ownership, architectural decision-making, and driving technical direction</strong> across critical systems. I take pride in completing what I start and contributing tangible outcomes to every deliverable the team ships.</p>
-            <p>Working on the We Buy Cars project continues to present significant engineering challenges. The systems we maintain and evolve are high-volume, business-critical, and demand both deep technical skill and sound architectural judgement. I have embraced these challenges with a mindset of continuous improvement &mdash; investing time to sharpen my craft, sharing what I learn with colleagues, and approaching every problem with honesty and transparency. Whether it means stepping up for a teammate or tackling an unfamiliar codebase, I believe the best outcomes emerge when we work cooperatively and hold ourselves to a high standard.</p>
-            <p>The work I do is always in service of the end user and the business. From rebuilding fragile pipelines to designing new systems from scratch, every decision is weighed against its real-world impact. And through it all, I genuinely enjoy the craft &mdash; the problem-solving, the collaboration, the satisfaction of watching a well-built system run smoothly in production.</p>
+<!-- INTRO as block comment -->
+<section id="intro" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">/**</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code"><span class="cm"> * @file intro.md</span></span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="cm"> * @author Stephan Kroukamp</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="cm"> *</span></span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="cm"> * Since my level movement to Solid Software Engineer, I have continued to push</span></span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code"><span class="cm"> * the boundaries of my technical ability and have taken on increasingly complex</span></span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code"><span class="cm"> * and impactful responsibilities. Where my previous journey was defined by rapid</span></span></div>
+            <div class="ln"><span class="ln-num">8</span><span class="ln-code"><span class="cm"> * learning and growth, this next chapter has been defined by ownership,</span></span></div>
+            <div class="ln"><span class="ln-num">9</span><span class="ln-code"><span class="cm"> * architectural decision-making, and driving technical direction across critical</span></span></div>
+            <div class="ln"><span class="ln-num">10</span><span class="ln-code"><span class="cm"> * systems. I take pride in completing what I start and contributing tangible</span></span></div>
+            <div class="ln"><span class="ln-num">11</span><span class="ln-code"><span class="cm"> * outcomes to every deliverable the team ships.</span></span></div>
+            <div class="ln"><span class="ln-num">12</span><span class="ln-code"><span class="cm"> *</span></span></div>
+            <div class="ln"><span class="ln-num">13</span><span class="ln-code"><span class="cm"> * Working on the We Buy Cars project continues to present significant</span></span></div>
+            <div class="ln"><span class="ln-num">14</span><span class="ln-code"><span class="cm"> * engineering challenges. The systems we maintain and evolve are high-volume,</span></span></div>
+            <div class="ln"><span class="ln-num">15</span><span class="ln-code"><span class="cm"> * business-critical, and demand both deep technical skill and sound</span></span></div>
+            <div class="ln"><span class="ln-num">16</span><span class="ln-code"><span class="cm"> * architectural judgement. I have embraced these challenges with a mindset of</span></span></div>
+            <div class="ln"><span class="ln-num">17</span><span class="ln-code"><span class="cm"> * continuous improvement — investing time to sharpen my craft, sharing what I</span></span></div>
+            <div class="ln"><span class="ln-num">18</span><span class="ln-code"><span class="cm"> * learn with colleagues, and approaching every problem with honesty and</span></span></div>
+            <div class="ln"><span class="ln-num">19</span><span class="ln-code"><span class="cm"> * transparency. Whether it means stepping up for a teammate or tackling an</span></span></div>
+            <div class="ln"><span class="ln-num">20</span><span class="ln-code"><span class="cm"> * unfamiliar codebase, I believe the best outcomes emerge when we work</span></span></div>
+            <div class="ln"><span class="ln-num">21</span><span class="ln-code"><span class="cm"> * cooperatively and hold ourselves to a high standard.</span></span></div>
+            <div class="ln"><span class="ln-num">22</span><span class="ln-code"><span class="cm"> *</span></span></div>
+            <div class="ln"><span class="ln-num">23</span><span class="ln-code"><span class="cm"> * The work I do is always in service of the end user and the business. From</span></span></div>
+            <div class="ln"><span class="ln-num">24</span><span class="ln-code"><span class="cm"> * rebuilding fragile pipelines to designing new systems from scratch, every</span></span></div>
+            <div class="ln"><span class="ln-num">25</span><span class="ln-code"><span class="cm"> * decision is weighed against its real-world impact. And through it all, I</span></span></div>
+            <div class="ln"><span class="ln-num">26</span><span class="ln-code"><span class="cm"> * genuinely enjoy the craft — the problem-solving, the collaboration, the</span></span></div>
+            <div class="ln"><span class="ln-num">27</span><span class="ln-code"><span class="cm"> * satisfaction of watching a well-built system run smoothly in production.</span></span></div>
+            <div class="ln"><span class="ln-num">28</span><span class="ln-code"><span class="cm"> */</span></span></div>
         </div>
     </div>
 </section>
 
 <!-- DEVOPS DASHBOARD -->
-<section id="devops">
-    <div class="container">
-        <div class="section-divider animate">// azure_devops_production_stats</div>
-        <h2 class="section-title animate">Production Delivery Dashboard</h2>
-        <p class="section-subtitle animate">Real data from Azure DevOps &mdash; master branch only. Across 6 repositories at We Buy Cars.</p>
-
-        <!-- SINCE SOLID -->
-        <div class="dashboard-period dashboard-highlight animate">
-            <div class="period-header">
-                <span class="period-badge highlight">Since Solid Movement</span>
-                <span class="period-title">Jul 2024 &ndash; Apr 2026</span>
-            </div>
-            <div class="dash-stats">
-                <div class="dash-stat"><div class="dash-stat-number" data-target="1644">0</div><div class="dash-stat-label">Production Commits</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="380">0</div><div class="dash-stat-label">PRs Shipped to Prod</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="726">0</div><div class="dash-stat-label">PRs Reviewed</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="6">0</div><div class="dash-stat-label">Repositories</div></div>
-            </div>
-            <div class="repo-breakdown">
-                <h4>Commits by Repository</h4>
-                <div class="repo-bar"><span class="repo-bar-name">BLMS-API</span><div class="repo-bar-track"><div class="repo-bar-fill primary" data-width="75"></div></div><span class="repo-bar-count">1,230</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">Inspectify</span><div class="repo-bar-track"><div class="repo-bar-fill secondary" data-width="16.4"></div></div><span class="repo-bar-count">270</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">IMS</span><div class="repo-bar-track"><div class="repo-bar-fill tertiary" data-width="4.3"></div></div><span class="repo-bar-count">71</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">Core-Packages</span><div class="repo-bar-track"><div class="repo-bar-fill quaternary" data-width="2.9"></div></div><span class="repo-bar-count">48</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">Chat-API</span><div class="repo-bar-track"><div class="repo-bar-fill quinary" data-width="1.5"></div></div><span class="repo-bar-count">25</span></div>
-            </div>
+<section id="devops" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// devops.ts — production delivery dashboard (master branch)</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">const</span> <span class="var">currentBranch</span> = <span class="str">"since-solid-movement"</span>; <span class="cm">// Jul 2024 — Apr 2026</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1644">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="380">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">8</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="726">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">9</span><span class="ln-code ln-indent"><span class="var">repositories</span>: <span class="counter num" data-target="6">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">10</span><span class="ln-code">});</span></div>
+            <div class="ln"><span class="ln-num">11</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">12</span><span class="ln-code"><span class="cm">// commits by repository</span></span></div>
         </div>
-
-        <!-- BEFORE SOLID -->
-        <div class="dashboard-period dash-historic animate">
-            <div class="period-header">
-                <span class="period-badge historic">Before Solid Movement</span>
-                <span class="period-title">Pre Jul 2024</span>
-            </div>
-            <div class="dash-stats">
-                <div class="dash-stat"><div class="dash-stat-number" data-target="1768">0</div><div class="dash-stat-label">Production Commits</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="286">0</div><div class="dash-stat-label">PRs Shipped to Prod</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="348">0</div><div class="dash-stat-label">PRs Reviewed</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" data-target="802">0</div><div class="dash-stat-label">Work Items Closed</div></div>
-            </div>
-            <div class="repo-breakdown">
-                <h4>Commits by Repository</h4>
-                <div class="repo-bar"><span class="repo-bar-name">BLMS-API</span><div class="repo-bar-track"><div class="repo-bar-fill primary" data-width="72.2"></div></div><span class="repo-bar-count">1,276</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">Chat-API</span><div class="repo-bar-track"><div class="repo-bar-fill quinary" data-width="15.4"></div></div><span class="repo-bar-count">273</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">IMS</span><div class="repo-bar-track"><div class="repo-bar-fill tertiary" data-width="10.7"></div></div><span class="repo-bar-count">189</span></div>
-                <div class="repo-bar"><span class="repo-bar-name">Core-Packages</span><div class="repo-bar-track"><div class="repo-bar-fill quaternary" data-width="1.7"></div></div><span class="repo-bar-count">30</span></div>
-            </div>
+        <div class="anim" style="padding: 0.25rem 0 0.25rem 3.5rem;">
+            <div class="repo-row"><span class="repo-name">"BLMS-API"</span><div class="repo-track"><div class="repo-fill c1" data-width="75"></div></div><span class="repo-ct">1,230</span></div>
+            <div class="repo-row"><span class="repo-name">"Inspectify"</span><div class="repo-track"><div class="repo-fill c2" data-width="16.4"></div></div><span class="repo-ct">270</span></div>
+            <div class="repo-row"><span class="repo-name">"IMS"</span><div class="repo-track"><div class="repo-fill c3" data-width="4.3"></div></div><span class="repo-ct">71</span></div>
+            <div class="repo-row"><span class="repo-name">"Core-Pkgs"</span><div class="repo-track"><div class="repo-fill c4" data-width="2.9"></div></div><span class="repo-ct">48</span></div>
+            <div class="repo-row"><span class="repo-name">"Chat-API"</span><div class="repo-track"><div class="repo-fill c5" data-width="1.5"></div></div><span class="repo-ct">25</span></div>
         </div>
-
-        <!-- ALL TIME TOTALS -->
-        <div class="dashboard-period animate" style="text-align:center; padding: 1.5rem 0;">
-            <div class="dash-stats" style="max-width:600px; margin:0 auto;">
-                <div class="dash-stat"><div class="dash-stat-number" style="color:var(--text-primary); font-size:2.2rem;" data-target="3412">0</div><div class="dash-stat-label">Total Prod Commits</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" style="color:var(--text-primary); font-size:2.2rem;" data-target="666">0</div><div class="dash-stat-label">Total PRs Shipped</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" style="color:var(--text-primary); font-size:2.2rem;" data-target="1074">0</div><div class="dash-stat-label">Total PRs Reviewed</div></div>
-                <div class="dash-stat"><div class="dash-stat-number" style="color:var(--text-primary); font-size:2.2rem;" data-target="802">0</div><div class="dash-stat-label">Work Items Closed</div></div>
-            </div>
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">13</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">14</span><span class="ln-code"><span class="kw">const</span> <span class="var">historicBranch</span> = <span class="str">"before-solid-movement"</span>; <span class="cm">// pre Jul 2024</span></span></div>
+            <div class="ln"><span class="ln-num">15</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">16</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
+            <div class="ln"><span class="ln-num">17</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1768">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">18</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="286">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="348">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">20</span><span class="ln-code ln-indent"><span class="var">workItemsClosed</span>: <span class="counter num" data-target="802">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">21</span><span class="ln-code">});</span></div>
         </div>
     </div>
 </section>
 
-<!-- ARCHITECTURE & TECHNICAL LEADERSHIP -->
-<section id="architecture">
-    <div class="container">
-        <div class="section-divider animate">/* architecture_and_leadership */</div>
-        <h2 class="section-title animate">Architecture & Technical Leadership</h2>
-        <p class="section-subtitle animate">Systems designed, rebuilt, and shipped.</p>
-
-        <!-- BLMS -->
-        <h3 class="group-heading animate"><span style="color:var(--accent-cyan)">&#9656;</span> BLMS &mdash; Buy Lead Management System</h3>
-        <div class="projects-grid">
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> .NET 8 & .NET 10 Upgrades</h3>
-                <p>Led the .NET 8 and .NET 10 upgrades across BLMS. Reworked all HTTP integrations, authentication, Serilog and app config. Completed the same upgrades for 15-20 other APIs using BLMS as a template.</p>
-                <div class="tags"><span class="tag tag-dotnet">.NET 8</span><span class="tag tag-dotnet">.NET 10</span><span class="tag tag-default">BLMS</span><span class="tag tag-default">Migration</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> Clean Architecture Consolidation</h3>
-                <p>Driving an ongoing consolidation across BLMS, collapsing four-layer Clean Architecture into a single streamlined layer &mdash; reducing complexity, removing unnecessary files, improving developer experience.</p>
-                <div class="tags"><span class="tag tag-architecture">Architecture</span><span class="tag tag-dotnet">C#</span><span class="tag tag-default">BLMS</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> MassTransit Refactor</h3>
-                <p>Replaced the MediatR-to-Service Bus subscription layer (SQL lookups) with direct MassTransit event publishing. Touched the core event-driven backbone &mdash; required simultaneous deployment of 6 microservices in production.</p>
-                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Azure Service Bus</span><span class="tag tag-default">Event-Driven</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> Elastic Search Sync Pipeline</h3>
-                <p>Rebuilt the entire Elastic Search syncing pipeline using Azure Service Bus session queues and MassTransit. Introduced an outbox table for deduplication &mdash; dramatically improving reliability and consistency.</p>
-                <div class="tags"><span class="tag tag-elastic">Elastic Search</span><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Session Queues</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> Lead Rollup System</h3>
-                <p>Designed the Lead Rollup system for buyer filters. Events fire on field changes to sync state. A stored procedure uses bitwise flag functions for the most performant BFF buyer filter calculation.</p>
-                <div class="tags"><span class="tag tag-dotnet">C#</span><span class="tag tag-performance">Performance</span><span class="tag tag-default">Event-Driven</span><span class="tag tag-default">Buyer Filters</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> AI-Powered Support Agent</h3>
-                <p>Designed and built an AI support agent combining four MCP sources: Serena (code analysis), Elastic (logs), Dynatrace (monitoring), and custom MCP for BLMS API access. Produces root cause analysis, fixes, and WhatsApp replies. Posts to Teams with pattern recognition over time.</p>
-                <div class="tags"><span class="tag tag-ai">AI / MCP</span><span class="tag tag-elastic">Elastic</span><span class="tag tag-default">Dynatrace</span><span class="tag tag-default">Support Agent</span></div>
-            </div>
+<!-- ARCHITECTURE -->
+<section id="architecture" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// architecture.ts — systems designed, rebuilt, and shipped</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="cm">// ─── BLMS — Buy Lead Management System ───</span></span></div>
         </div>
-
-        <!-- REMARKETING -->
-        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-green)">&#9656;</span> Remarketing API</h3>
-        <div class="projects-grid">
-            <div class="project-card animate" style="border-left-color:var(--accent-green);">
-                <h3><span class="arrow">&#9656;</span> Remarketing API</h3>
-                <p>Designed and delivered before the December 2025 deadline. Pulls sales data for vehicles sold 2+ years ago, contacts previous sellers, auto-logs new leads. Since deployment: zero code fixes and substantial lead generation.</p>
-                <div class="tags"><span class="tag tag-delivery">Zero Fixes</span><span class="tag tag-dotnet">.NET</span><span class="tag tag-delivery">Rapid Delivery</span></div>
-            </div>
-        </div>
-
-        <!-- WEFIN -->
-        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-yellow)">&#9656;</span> WeFin &mdash; Financial Services Platform</h3>
-        <div class="projects-grid">
-            <div class="project-card animate" style="border-left-color:var(--accent-yellow);">
-                <h3><span class="arrow">&#9656;</span> System Alerts</h3>
-                <p>Implemented a system alerts mechanism monitoring sales application volumes against configured thresholds, triggering alerts when activity drops below expected levels.</p>
-                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Service Bus</span><span class="tag tag-default">Monitoring</span></div>
-            </div>
-            <div class="project-card animate" style="border-left-color:var(--accent-yellow);">
-                <h3><span class="arrow">&#9656;</span> Contract Signing Integration</h3>
-                <p>Integrated contract signing using request/response pattern with MassTransit and Azure Service Bus. The system went live with minimal issues.</p>
-                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Service Bus</span><span class="tag tag-default">Request/Response</span></div>
-            </div>
-        </div>
-
-        <!-- INSPECTIFY -->
-        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-purple)">&#9656;</span> Inspectify &mdash; Vehicle Inspection Platform</h3>
-        <div class="projects-grid">
-            <div class="project-card animate" style="border-left-color:var(--accent-purple);">
-                <h3><span class="arrow">&#9656;</span> Inspectify &mdash; Architecture & Launch</h3>
-                <p>Key role in architecting, designing, implementing, and taking Inspectify live within 1-2 months. Built with solid test coverage, clean code, and easy-to-onboard conventions. Production-ready quality at pace.</p>
-                <div class="tags"><span class="tag tag-dotnet">C#</span><span class="tag tag-architecture">Architecture</span><span class="tag tag-delivery">Fast Delivery</span></div>
-            </div>
-            <div class="project-card animate" style="border-left-color:var(--accent-purple);">
-                <h3><span class="arrow">&#9656;</span> MAHA Brake Test Integration</h3>
-                <p>Reverse-engineered German documentation from 1990s-era MAHA software. Built the ES_IN/ES_OUT file system integration with MassTransit Topics, subscriptions, and SQL filter rules per branch code. QR code scanning replaces manual processes.</p>
-                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Topics & Subscriptions</span><span class="tag tag-ai">AI-Assisted</span><span class="tag tag-default">MAHA</span></div>
-            </div>
-        </div>
-
-        <!-- VEHICLE CATALOGUE -->
-        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-orange)">&#9656;</span> Vehicle Catalogue &mdash; TransUnion Import Pipeline</h3>
-        <div class="projects-grid">
-            <div class="project-card animate" style="border-left-color:var(--accent-orange);">
-                <h3><span class="arrow">&#9656;</span> TransUnion Catalogue Import</h3>
-                <p>Took full ownership of the fragile TransUnion pipeline. Rebuilt it from the ground up &mdash; used to take days with DB timeouts and deadlocks. Now finishes in an hour. Replaced costly API calls with monthly SFTP imports.</p>
-                <div class="tags"><span class="tag tag-performance">Days &#8594; 1 Hour</span><span class="tag tag-dotnet">C#</span><span class="tag tag-pipeline">Pipeline</span><span class="tag tag-default">TransUnion</span></div>
-            </div>
-        </div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="kw">class</span> <span class="type">DotNetUpgrades</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">5</span><span class="ln-code ln-indent"><span class="cm">/** Led .NET 8 and .NET 10 upgrades across BLMS. Reworked all HTTP</span></span></div><div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="cm"> *  integrations, auth, Serilog and app config. Completed same upgrades</span></span></div><div class="ln"><span class="ln-num">7</span><span class="ln-code ln-indent"><span class="cm"> *  for 15-20 other APIs using BLMS as template. */</span></span></div><div class="ln"><span class="ln-num">8</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">".NET 8"</span>) <span class="dec">@tag</span>(<span class="str">".NET 10"</span>) <span class="dec">@tag</span>(<span class="str">"BLMS"</span>) <span class="dec">@tag</span>(<span class="str">"Migration"</span>)</span></div><div class="ln"><span class="ln-num">9</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">10</span><span class="ln-code"><span class="kw">class</span> <span class="type">CleanArchitectureConsolidation</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">11</span><span class="ln-code ln-indent"><span class="cm">/** Driving ongoing consolidation across BLMS, collapsing four-layer</span></span></div><div class="ln"><span class="ln-num">12</span><span class="ln-code ln-indent"><span class="cm"> *  Clean Architecture into a single streamlined layer — reducing</span></span></div><div class="ln"><span class="ln-num">13</span><span class="ln-code ln-indent"><span class="cm"> *  complexity, removing unnecessary files, improving DX. */</span></span></div><div class="ln"><span class="ln-num">14</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Architecture"</span>) <span class="dec">@tag</span>(<span class="str">"C#"</span>) <span class="dec">@tag</span>(<span class="str">"BLMS"</span>)</span></div><div class="ln"><span class="ln-num">15</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">16</span><span class="ln-code"><span class="kw">class</span> <span class="type">MassTransitRefactor</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">17</span><span class="ln-code ln-indent"><span class="cm">/** Replaced MediatR-to-Service Bus subscription layer (SQL lookups) with</span></span></div><div class="ln"><span class="ln-num">18</span><span class="ln-code ln-indent"><span class="cm"> *  direct MassTransit event publishing. Touched the core event-driven</span></span></div><div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent"><span class="cm"> *  backbone — required simultaneous deployment of 6 microservices. */</span></span></div><div class="ln"><span class="ln-num">20</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"MassTransit"</span>) <span class="dec">@tag</span>(<span class="str">"Azure Service Bus"</span>) <span class="dec">@tag</span>(<span class="str">"Event-Driven"</span>)</span></div><div class="ln"><span class="ln-num">21</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">22</span><span class="ln-code"><span class="kw">class</span> <span class="type">ElasticSearchSyncPipeline</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">23</span><span class="ln-code ln-indent"><span class="cm">/** Rebuilt entire ES syncing pipeline using Azure Service Bus session</span></span></div><div class="ln"><span class="ln-num">24</span><span class="ln-code ln-indent"><span class="cm"> *  queues and MassTransit. Introduced outbox table for deduplication —</span></span></div><div class="ln"><span class="ln-num">25</span><span class="ln-code ln-indent"><span class="cm"> *  dramatically improving reliability and consistency. */</span></span></div><div class="ln"><span class="ln-num">26</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Elastic Search"</span>) <span class="dec">@tag</span>(<span class="str">"MassTransit"</span>) <span class="dec">@tag</span>(<span class="str">"Session Queues"</span>)</span></div><div class="ln"><span class="ln-num">27</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">28</span><span class="ln-code"><span class="kw">class</span> <span class="type">LeadRollupSystem</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">29</span><span class="ln-code ln-indent"><span class="cm">/** Designed Lead Rollup for buyer filters. Events fire on field changes</span></span></div><div class="ln"><span class="ln-num">30</span><span class="ln-code ln-indent"><span class="cm"> *  to sync state. Stored procedure uses bitwise flag functions for the</span></span></div><div class="ln"><span class="ln-num">31</span><span class="ln-code ln-indent"><span class="cm"> *  most performant BFF buyer filter calculation. */</span></span></div><div class="ln"><span class="ln-num">32</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"C#"</span>) <span class="dec">@tag</span>(<span class="str">"Performance"</span>) <span class="dec">@tag</span>(<span class="str">"Event-Driven"</span>)</span></div><div class="ln"><span class="ln-num">33</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">34</span><span class="ln-code"><span class="kw">class</span> <span class="type">AIPoweredSupportAgent</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">35</span><span class="ln-code ln-indent"><span class="cm">/** Built AI support agent combining four MCP sources: Serena (code),</span></span></div><div class="ln"><span class="ln-num">36</span><span class="ln-code ln-indent"><span class="cm"> *  Elastic (logs), Dynatrace (monitoring), custom MCP for BLMS API.</span></span></div><div class="ln"><span class="ln-num">37</span><span class="ln-code ln-indent"><span class="cm"> *  Produces root cause analysis, fixes, WhatsApp replies. Posts to Teams</span></span></div><div class="ln"><span class="ln-num">38</span><span class="ln-code ln-indent"><span class="cm"> *  with pattern recognition over time. */</span></span></div><div class="ln"><span class="ln-num">39</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"AI / MCP"</span>) <span class="dec">@tag</span>(<span class="str">"Elastic"</span>) <span class="dec">@tag</span>(<span class="str">"Dynatrace"</span>)</span></div><div class="ln"><span class="ln-num">40</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim"><div class="ln"><span class="ln-num">41</span><span class="ln-code">&nbsp;</span></div><div class="ln"><span class="ln-num">42</span><span class="ln-code"><span class="cm">// ─── Remarketing API ───</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">43</span><span class="ln-code"><span class="kw">class</span> <span class="type">RemarketingAPI</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">44</span><span class="ln-code ln-indent"><span class="cm">/** Designed and delivered before Dec 2025 deadline. Pulls sales data for</span></span></div><div class="ln"><span class="ln-num">45</span><span class="ln-code ln-indent"><span class="cm"> *  vehicles sold 2+ years ago, contacts previous sellers, auto-logs new</span></span></div><div class="ln"><span class="ln-num">46</span><span class="ln-code ln-indent"><span class="cm"> *  leads. Since deployment: zero code fixes, substantial lead gen. */</span></span></div><div class="ln"><span class="ln-num">47</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Zero Fixes"</span>) <span class="dec">@tag</span>(<span class="str">".NET"</span>) <span class="dec">@tag</span>(<span class="str">"Rapid Delivery"</span>)</span></div><div class="ln"><span class="ln-num">48</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim"><div class="ln"><span class="ln-num">49</span><span class="ln-code">&nbsp;</span></div><div class="ln"><span class="ln-num">50</span><span class="ln-code"><span class="cm">// ─── WeFin — Financial Services Platform ───</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">51</span><span class="ln-code"><span class="kw">class</span> <span class="type">SystemAlerts</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">52</span><span class="ln-code ln-indent"><span class="cm">/** Monitoring sales application volumes against configured thresholds,</span></span></div><div class="ln"><span class="ln-num">53</span><span class="ln-code ln-indent"><span class="cm"> *  triggering alerts when activity drops below expected levels. */</span></span></div><div class="ln"><span class="ln-num">54</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"MassTransit"</span>) <span class="dec">@tag</span>(<span class="str">"Service Bus"</span>) <span class="dec">@tag</span>(<span class="str">"Monitoring"</span>)</span></div><div class="ln"><span class="ln-num">55</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">56</span><span class="ln-code"><span class="kw">class</span> <span class="type">ContractSigning</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">57</span><span class="ln-code ln-indent"><span class="cm">/** Integrated contract signing using request/response pattern with</span></span></div><div class="ln"><span class="ln-num">58</span><span class="ln-code ln-indent"><span class="cm"> *  MassTransit and Azure Service Bus. Went live with minimal issues. */</span></span></div><div class="ln"><span class="ln-num">59</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"MassTransit"</span>) <span class="dec">@tag</span>(<span class="str">"Service Bus"</span>) <span class="dec">@tag</span>(<span class="str">"Request/Response"</span>)</span></div><div class="ln"><span class="ln-num">60</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim"><div class="ln"><span class="ln-num">61</span><span class="ln-code">&nbsp;</span></div><div class="ln"><span class="ln-num">62</span><span class="ln-code"><span class="cm">// ─── Inspectify — Vehicle Inspection Platform ───</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">63</span><span class="ln-code"><span class="kw">class</span> <span class="type">InspectifyLaunch</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">64</span><span class="ln-code ln-indent"><span class="cm">/** Key role in architecting, designing, implementing Inspectify live</span></span></div><div class="ln"><span class="ln-num">65</span><span class="ln-code ln-indent"><span class="cm"> *  within 1-2 months. Solid test coverage, clean code, easy-to-onboard</span></span></div><div class="ln"><span class="ln-num">66</span><span class="ln-code ln-indent"><span class="cm"> *  conventions. Production-ready quality at pace. */</span></span></div><div class="ln"><span class="ln-num">67</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"C#"</span>) <span class="dec">@tag</span>(<span class="str">"Architecture"</span>) <span class="dec">@tag</span>(<span class="str">"Fast Delivery"</span>)</span></div><div class="ln"><span class="ln-num">68</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">69</span><span class="ln-code"><span class="kw">class</span> <span class="type">MAHABrakeTestIntegration</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">70</span><span class="ln-code ln-indent"><span class="cm">/** Reverse-engineered 1990s German MAHA software docs. Built ES_IN/ES_OUT</span></span></div><div class="ln"><span class="ln-num">71</span><span class="ln-code ln-indent"><span class="cm"> *  file system integration with MassTransit Topics, subscriptions, SQL</span></span></div><div class="ln"><span class="ln-num">72</span><span class="ln-code ln-indent"><span class="cm"> *  filter rules per branch. QR scanning replaces manual processes. */</span></span></div><div class="ln"><span class="ln-num">73</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"MassTransit"</span>) <span class="dec">@tag</span>(<span class="str">"Topics"</span>) <span class="dec">@tag</span>(<span class="str">"AI-Assisted"</span>)</span></div><div class="ln"><span class="ln-num">74</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim"><div class="ln"><span class="ln-num">75</span><span class="ln-code">&nbsp;</span></div><div class="ln"><span class="ln-num">76</span><span class="ln-code"><span class="cm">// ─── Vehicle Catalogue — TransUnion Import Pipeline ───</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">77</span><span class="ln-code"><span class="kw">class</span> <span class="type">TransUnionCatalogueImport</span> <span class="bracket">{</span></span></div><div class="ln"><span class="ln-num">78</span><span class="ln-code ln-indent"><span class="cm">/** Took full ownership of fragile TransUnion pipeline. Rebuilt from</span></span></div><div class="ln"><span class="ln-num">79</span><span class="ln-code ln-indent"><span class="cm"> *  ground up — used to take days with DB timeouts and deadlocks. Now</span></span></div><div class="ln"><span class="ln-num">80</span><span class="ln-code ln-indent"><span class="cm"> *  finishes in an hour. Replaced costly API calls with monthly SFTP. */</span></span></div><div class="ln"><span class="ln-num">81</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Days → 1 Hour"</span>) <span class="dec">@tag</span>(<span class="str">"C#"</span>) <span class="dec">@tag</span>(<span class="str">"Pipeline"</span>)</span></div><div class="ln"><span class="ln-num">82</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
     </div>
 </section>
 
 <!-- PERSONAL PROJECTS -->
-<section id="projects" class="personal">
-    <div class="container">
-        <div class="section-divider animate">// side_projects</div>
-        <h2 class="section-title animate">Personal Projects & Continuous Learning</h2>
-        <p class="section-subtitle animate">Building beyond the day job.</p>
-        <div class="projects-grid">
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> Full-Stack Architecture Project</h3><p>A passion project designed over many years, showcasing full-stack architecture and design.</p><div class="tags"><span class="tag tag-dotnet">Full-Stack</span><span class="tag tag-dotnet">C#</span><span class="tag tag-default">Coming Soon</span></div></div>
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> <a href="https://github.com/StephanWBC/sql-explorer" target="_blank" style="color:inherit;text-decoration:none;">SQL Explorer</a></h3><p>After switching to Mac and missing SSMS, built a native macOS SQL management tool with all essential features. Planned for internal release.</p><div class="tags"><span class="tag tag-default">macOS</span><span class="tag tag-default">Tooling</span><a href="https://github.com/StephanWBC/sql-explorer" target="_blank" class="tag tag-delivery" style="text-decoration:none;">GitHub</a></div></div>
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> <a href="https://github.com/StephanKroukamp/AzureExamSimulator" target="_blank" style="color:inherit;text-decoration:none;">Azure Exam Simulator</a></h3><p>A Blazor app that OCRs PDF exam dumps into structured JSON, then renders a simulated exam UI for practice.</p><div class="tags"><span class="tag tag-dotnet">Blazor</span><span class="tag tag-azure">Azure Certs</span><span class="tag tag-default">OCR</span><a href="https://github.com/StephanKroukamp/AzureExamSimulator" target="_blank" class="tag tag-delivery" style="text-decoration:none;">GitHub</a></div></div>
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> Minesweeper VS Code Extension</h3><p>Built a fully functional Minesweeper game as a Visual Studio Code extension.</p><div class="tags"><span class="tag tag-default">VS Code</span><span class="tag tag-default">Extension</span><span class="tag tag-default">Coming Soon</span></div></div>
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> <a href="https://github.com/StephanKroukamp/macslap" target="_blank" style="color:inherit;text-decoration:none;">Mac-Slap</a></h3><p>A macOS app that uses the accelerometer to detect slaps and lid movement, playing sounds in response. A fun experiment in hardware sensor integration on Apple Silicon.</p><div class="tags"><span class="tag tag-default">macOS</span><span class="tag tag-default">Swift</span><span class="tag tag-default">Accelerometer</span><a href="https://github.com/StephanKroukamp/macslap" target="_blank" class="tag tag-delivery" style="text-decoration:none;">GitHub</a></div></div>
-            <div class="project-card animate"><h3><span class="arrow">&#9656;</span> Cross-Platform .NET IDE</h3><p>Currently building a cross-platform .NET IDE &mdash; potentially web-based &mdash; pushing the boundaries of tooling development.</p><div class="tags"><span class="tag tag-dotnet">.NET</span><span class="tag tag-default">IDE</span><span class="tag tag-default">Cross-Platform</span><span class="tag tag-default">Coming Soon</span></div></div>
+<section id="projects" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// projects.ts — building beyond the day job</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
+        </div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">class</span> <span class="type">FullStackArchitecture</span> <span class="bracket">{</span> <span class="cm">// coming soon</span></span></div><div class="ln"><span class="ln-num">4</span><span class="ln-code ln-indent"><span class="cm">/** Passion project designed over many years, showcasing full-stack</span></span></div><div class="ln"><span class="ln-num">5</span><span class="ln-code ln-indent"><span class="cm"> *  architecture and design. */</span></span></div><div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Full-Stack"</span>) <span class="dec">@tag</span>(<span class="str">"C#"</span>)</span></div><div class="ln"><span class="ln-num">7</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">8</span><span class="ln-code"><span class="kw">class</span> <span class="type">SqlExplorer</span> <span class="bracket">{</span> <span class="cm">// <a href="https://github.com/StephanWBC/sql-explorer" target="_blank" style="color:var(--comment)">github.com/StephanWBC/sql-explorer</a></span></span></div><div class="ln"><span class="ln-num">9</span><span class="ln-code ln-indent"><span class="cm">/** After switching to Mac and missing SSMS, built a native macOS SQL</span></span></div><div class="ln"><span class="ln-num">10</span><span class="ln-code ln-indent"><span class="cm"> *  management tool with all essential features. */</span></span></div><div class="ln"><span class="ln-num">11</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"macOS"</span>) <span class="dec">@tag</span>(<span class="str">"Tooling"</span>)</span></div><div class="ln"><span class="ln-num">12</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">13</span><span class="ln-code"><span class="kw">class</span> <span class="type">AzureExamSimulator</span> <span class="bracket">{</span> <span class="cm">// <a href="https://github.com/StephanKroukamp/AzureExamSimulator" target="_blank" style="color:var(--comment)">github.com/.../AzureExamSimulator</a></span></span></div><div class="ln"><span class="ln-num">14</span><span class="ln-code ln-indent"><span class="cm">/** Blazor app that OCRs PDF exam dumps into structured JSON, then</span></span></div><div class="ln"><span class="ln-num">15</span><span class="ln-code ln-indent"><span class="cm"> *  renders a simulated exam UI for practice. */</span></span></div><div class="ln"><span class="ln-num">16</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"Blazor"</span>) <span class="dec">@tag</span>(<span class="str">"Azure Certs"</span>) <span class="dec">@tag</span>(<span class="str">"OCR"</span>)</span></div><div class="ln"><span class="ln-num">17</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">18</span><span class="ln-code"><span class="kw">class</span> <span class="type">MinesweeperExtension</span> <span class="bracket">{</span> <span class="cm">// coming soon</span></span></div><div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent"><span class="cm">/** Built a fully functional Minesweeper game as a VS Code extension. */</span></span></div><div class="ln"><span class="ln-num">20</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"VS Code"</span>) <span class="dec">@tag</span>(<span class="str">"Extension"</span>)</span></div><div class="ln"><span class="ln-num">21</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">22</span><span class="ln-code"><span class="kw">class</span> <span class="type">MacSlap</span> <span class="bracket">{</span> <span class="cm">// <a href="https://github.com/StephanKroukamp/macslap" target="_blank" style="color:var(--comment)">github.com/.../macslap</a></span></span></div><div class="ln"><span class="ln-num">23</span><span class="ln-code ln-indent"><span class="cm">/** macOS app using accelerometer to detect slaps and lid movement,</span></span></div><div class="ln"><span class="ln-num">24</span><span class="ln-code ln-indent"><span class="cm"> *  playing sounds in response. Hardware sensor integration on Apple Silicon. */</span></span></div><div class="ln"><span class="ln-num">25</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">"macOS"</span>) <span class="dec">@tag</span>(<span class="str">"Swift"</span>) <span class="dec">@tag</span>(<span class="str">"Accelerometer"</span>)</span></div><div class="ln"><span class="ln-num">26</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+        <div class="code-block anim code-card"><div class="ln"><span class="ln-num">27</span><span class="ln-code"><span class="kw">class</span> <span class="type">CrossPlatformDotNetIDE</span> <span class="bracket">{</span> <span class="cm">// coming soon</span></span></div><div class="ln"><span class="ln-num">28</span><span class="ln-code ln-indent"><span class="cm">/** Building a cross-platform .NET IDE — potentially web-based — pushing</span></span></div><div class="ln"><span class="ln-num">29</span><span class="ln-code ln-indent"><span class="cm"> *  the boundaries of tooling development. */</span></span></div><div class="ln"><span class="ln-num">30</span><span class="ln-code ln-indent"><span class="dec">@tag</span>(<span class="str">".NET"</span>) <span class="dec">@tag</span>(<span class="str">"IDE"</span>) <span class="dec">@tag</span>(<span class="str">"Cross-Platform"</span>)</span></div><div class="ln"><span class="ln-num">31</span><span class="ln-code"><span class="bracket">}</span></span></div></div>
+    </div>
+</section>
+
+<!-- MENTORING as git log -->
+<section id="mentoring" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// mentoring.log — knowledge sharing & mentoring</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">commit</span> <span class="num">a3f7c2d</span> <span class="cm">// Fun Fact Thursday</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="var">Author:</span> Stephan Kroukamp &lt;stephank@agilebridge.co.za&gt;</span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="var">Topic:</span> <span class="str">"MassTransit"</span></span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="cm">// Presented session covering how MassTransit serves as an abstraction</span></span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code ln-indent"><span class="cm">// layer for distributed systems using Azure Service Bus and RabbitMQ.</span></span></div>
+            <div class="ln"><span class="ln-num">8</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">9</span><span class="ln-code"><span class="kw">commit</span> <span class="num">e91b4a8</span> <span class="cm">// Backend Think Tank</span></span></div>
+            <div class="ln"><span class="ln-num">10</span><span class="ln-code"><span class="var">Author:</span> Stephan Kroukamp &lt;stephank@agilebridge.co.za&gt;</span></div>
+            <div class="ln"><span class="ln-num">11</span><span class="ln-code"><span class="var">Topic:</span> <span class="str">"Architecture Patterns"</span></span></div>
+            <div class="ln"><span class="ln-num">12</span><span class="ln-code ln-indent"><span class="cm">// Led session on Vertical Slice vs Clean Architecture, driving</span></span></div>
+            <div class="ln"><span class="ln-num">13</span><span class="ln-code ln-indent"><span class="cm">// technical discussion on patterns and trade-offs.</span></span></div>
+            <div class="ln"><span class="ln-num">14</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">15</span><span class="ln-code"><span class="kw">commit</span> <span class="num">d47f0c3</span> <span class="cm">// AI Workshop</span></span></div>
+            <div class="ln"><span class="ln-num">16</span><span class="ln-code"><span class="var">Author:</span> Stephan Kroukamp &lt;stephank@agilebridge.co.za&gt;</span></div>
+            <div class="ln"><span class="ln-num">17</span><span class="ln-code"><span class="var">Topic:</span> <span class="str">"Claude Code AI Training Workshop"</span></span></div>
+            <div class="ln"><span class="ln-num">18</span><span class="ln-code ln-indent"><span class="cm">// Designed and delivered for Agile Bridge and We Buy Cars, helping</span></span></div>
+            <div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent"><span class="cm">// the broader team adopt AI-assisted development workflows.</span></span></div>
         </div>
     </div>
 </section>
 
-<!-- KNOWLEDGE SHARING -->
-<section id="mentoring">
-    <div class="container">
-        <div class="section-divider animate">/* mentoring && knowledge_sharing */</div>
-        <h2 class="section-title animate">Knowledge Sharing & Mentoring</h2>
-        <p class="section-subtitle animate">Uplifting the team through teaching.</p>
-        <div class="mentoring-list">
-            <div class="mentoring-item animate"><h3>Fun Fact Thursday &mdash; MassTransit</h3><p>Presented a session covering how MassTransit serves as an abstraction layer for building distributed systems using transport brokers such as Azure Service Bus and RabbitMQ.</p><div class="tags" style="margin-top:0.5rem;"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-default">Distributed Systems</span></div></div>
-            <div class="mentoring-item animate"><h3>Backend Think Tank &mdash; Architecture Patterns</h3><p>Led a session on Vertical Slice Architecture vs Clean Architecture, driving a technical discussion on patterns and their trade-offs.</p><div class="tags" style="margin-top:0.5rem;"><span class="tag tag-architecture">Vertical Slice</span><span class="tag tag-architecture">Clean Architecture</span></div></div>
-            <div class="mentoring-item animate"><h3>Claude Code AI Training Workshop</h3><p>Designed and delivered a Claude Code AI Training Workshop for Agile Bridge and We Buy Cars, helping the broader team understand and adopt AI-assisted development workflows.</p><div class="tags" style="margin-top:0.5rem;"><span class="tag tag-ai">Claude Code</span><span class="tag tag-default">Workshop</span></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="certs">
-    <div class="container">
-        <div class="section-divider animate">// certifications.forEach(cert =&gt; display(cert))</div>
-        <h2 class="section-title animate">Certifications</h2>
-        <p class="section-subtitle animate">Microsoft Azure certified.</p>
-        <div class="certs-grid">
-            <div class="cert-card animate"><div class="cert-check">&#10003;</div><div class="cert-code">AZ-900</div><div class="cert-name">Azure Fundamentals</div></div>
-            <div class="cert-card animate animate-delay-1"><div class="cert-check">&#10003;</div><div class="cert-code">AZ-204</div><div class="cert-name">Azure Developer Associate</div></div>
-            <div class="cert-card animate animate-delay-2"><div class="cert-check">&#10003;</div><div class="cert-code">AZ-400</div><div class="cert-name">Azure DevOps Engineer Expert</div></div>
+<!-- CERTIFICATIONS as enum -->
+<section id="certs" class="file-section">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// certs.ts — Microsoft Azure certified</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">enum</span> <span class="type">Certifications</span> <span class="bracket">{</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code ln-indent"><span class="var">AZ_900</span> = <span class="str">"Azure Fundamentals"</span>,            <span class="cm">// ✓ passed</span></span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code ln-indent"><span class="var">AZ_204</span> = <span class="str">"Azure Developer Associate"</span>,    <span class="cm">// ✓ passed</span></span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="var">AZ_400</span> = <span class="str">"Azure DevOps Engineer Expert"</span>,  <span class="cm">// ✓ passed</span></span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code"><span class="bracket">}</span></span></div>
         </div>
     </div>
 </section>
 
 <!-- CLOSING -->
-<section class="closing">
-    <div class="container">
-        <div class="section-divider animate">// closing_statement</div>
-        <p class="closing-prose animate">I believe that I am ready for the level movement to Senior Software Engineer as set out by Agile Bridge. My contributions have evolved from feature implementation to driving architectural direction, taking ownership of critical and complex systems, and actively sharing knowledge to uplift those around me. I approach each challenge with integrity, a willingness to learn from missteps, and a commitment to making every interaction &mdash; with colleagues and with code &mdash; leave things better than I found them. I look forward to continuing to grow, lead, and deliver exceptional outcomes for Agile Bridge and our clients.</p>
-        <div class="closing-block animate">
-            <span class="comment">// status</span><br>
-            <span class="keyword">const</span> readiness = {<br>
-            &nbsp;&nbsp;role: <span class="string">"Senior Software Engineer"</span>,<br>
-            &nbsp;&nbsp;confidence: <span class="string">"ready"</span>,<br>
-            &nbsp;&nbsp;focus: [<span class="string">"ownership"</span>, <span class="string">"precision"</span>, <span class="string">"quality"</span>]<br>
-            };<br><br>
-            <span class="keyword">return</span> readiness;<span class="cursor"></span>
+<section class="file-section" style="border-bottom:none;">
+    <div class="editor">
+        <div class="code-block anim">
+            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">/**</span></span></div>
+            <div class="ln"><span class="ln-num">2</span><span class="ln-code"><span class="cm"> * I believe that I am ready for the level movement to Senior Software</span></span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="cm"> * Engineer as set out by Agile Bridge. My contributions have evolved from</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="cm"> * feature implementation to driving architectural direction, taking</span></span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="cm"> * ownership of critical and complex systems, and actively sharing</span></span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code"><span class="cm"> * knowledge to uplift those around me. I approach each challenge with</span></span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code"><span class="cm"> * integrity, a willingness to learn from missteps, and a commitment to</span></span></div>
+            <div class="ln"><span class="ln-num">8</span><span class="ln-code"><span class="cm"> * making every interaction — with colleagues and with code — leave things</span></span></div>
+            <div class="ln"><span class="ln-num">9</span><span class="ln-code"><span class="cm"> * better than I found them.</span></span></div>
+            <div class="ln"><span class="ln-num">10</span><span class="ln-code"><span class="cm"> */</span></span></div>
+            <div class="ln"><span class="ln-num">11</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">12</span><span class="ln-code"><span class="kw">const</span> <span class="var">readiness</span> = {</span></div>
+            <div class="ln"><span class="ln-num">13</span><span class="ln-code ln-indent"><span class="var">role</span>: <span class="str">"Senior Software Engineer"</span>,</span></div>
+            <div class="ln"><span class="ln-num">14</span><span class="ln-code ln-indent"><span class="var">confidence</span>: <span class="str">"ready"</span>,</span></div>
+            <div class="ln"><span class="ln-num">15</span><span class="ln-code ln-indent"><span class="var">focus</span>: [<span class="str">"ownership"</span>, <span class="str">"precision"</span>, <span class="str">"quality"</span>],</span></div>
+            <div class="ln"><span class="ln-num">16</span><span class="ln-code">};</span></div>
+            <div class="ln"><span class="ln-num">17</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">18</span><span class="ln-code"><span class="kw">return</span> readiness;<span class="cursor"></span></span></div>
         </div>
     </div>
 </section>
 
-<footer>
-    <div class="container">
-        <div class="footer-terminal"><span style="color:var(--accent-green)">stephan@github</span>:<span style="color:var(--accent-cyan)">~</span>$ <span style="color:var(--text-secondary)">exit</span></div>
-    </div>
-</footer>
+</div><!-- /.ide -->
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+    <span>stephan-kroukamp.ts — TypeScript</span>
+    <span>Ln 18, Col 20 &nbsp; UTF-8 &nbsp; Spaces: 2</span>
+</div>
 
 <script>
 (function() {
-    var toggle = document.querySelector('.theme-toggle');
-    toggle.addEventListener('click', function() {
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', function() {
         var c = document.documentElement.getAttribute('data-theme');
         var n = c === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', n);
         localStorage.setItem('theme', n);
     });
 
+    // Tab active state on scroll
+    var tabs = document.querySelectorAll('.tab[data-section]');
+    var sections = {};
+    tabs.forEach(function(t) { sections[t.dataset.section] = document.getElementById(t.dataset.section); });
+    var scrollObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                tabs.forEach(function(t) { t.classList.remove('active'); });
+                var tab = document.querySelector('.tab[data-section="' + e.target.id + '"]');
+                if (tab) tab.classList.add('active');
+            }
+        });
+    }, { threshold: 0.3 });
+    Object.values(sections).forEach(function(s) { if (s) scrollObserver.observe(s); });
+
+    // Smooth scroll tabs
+    tabs.forEach(function(t) {
+        t.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Terminal typing
     var lines = [
-        { cmd: 'cmd-1', text: 'whoami', out: 'out-1', outText: 'Stephan Kroukamp' },
-        { cmd: 'cmd-2', line: 'line-2', text: 'cat role.txt', out: 'out-2', outText: 'Senior Software Engineer Candidate @ Agile Bridge' },
-        { cmd: 'cmd-3', line: 'line-3', text: 'cat project.txt', out: 'out-3', outText: 'We Buy Cars' },
-        { cmd: 'cmd-4', line: 'line-4', text: 'az certifications --list', out: 'out-4', outText: '\u2713 AZ-900  \u2713 AZ-204  \u2713 AZ-400' },
-        { cmd: 'cmd-5', line: 'line-5', text: 'git log --oneline | wc -l', out: 'out-5', outText: '3,412 prod commits \u00b7 666 PRs shipped \u00b7 6 repositories' },
+        { cmd: 'c1', text: 'whoami', out: 'o1', outText: 'Stephan Kroukamp' },
+        { cmd: 'c2', line: 'l2', text: 'cat role.txt', out: 'o2', outText: 'Senior Software Engineer Candidate @ Agile Bridge' },
+        { cmd: 'c3', line: 'l3', text: 'cat project.txt', out: 'o3', outText: 'We Buy Cars' },
+        { cmd: 'c4', line: 'l4', text: 'az certifications --list', out: 'o4', outText: '\u2713 AZ-900  \u2713 AZ-204  \u2713 AZ-400' },
+        { cmd: 'c5', line: 'l5', text: 'git log --oneline | wc -l', out: 'o5', outText: '3,412 prod commits \u00b7 666 PRs shipped \u00b7 6 repositories' },
     ];
     function typeText(el, text, speed) {
-        return new Promise(function(resolve) {
+        return new Promise(function(r) {
             var i = 0;
-            (function tick() { if (i < text.length) { el.textContent += text.charAt(i); i++; setTimeout(tick, speed); } else resolve(); })();
+            (function t() { if (i < text.length) { el.textContent += text.charAt(i); i++; setTimeout(t, speed); } else r(); })();
         });
     }
-    async function runTerminal() {
-        for (var idx = 0; idx < lines.length; idx++) {
-            var l = lines[idx];
+    (async function() {
+        for (var i = 0; i < lines.length; i++) {
+            var l = lines[i];
             if (l.line) document.getElementById(l.line).style.display = '';
-            await typeText(document.getElementById(l.cmd), l.text, 40);
-            await new Promise(function(r) { setTimeout(r, 300); });
-            var outEl = document.getElementById(l.out);
-            outEl.style.display = '';
-            outEl.textContent = l.outText;
-            await new Promise(function(r) { setTimeout(r, 200); });
+            await typeText(document.getElementById(l.cmd), l.text, 35);
+            await new Promise(function(r) { setTimeout(r, 250); });
+            var o = document.getElementById(l.out);
+            o.style.display = '';
+            o.textContent = l.outText;
+            await new Promise(function(r) { setTimeout(r, 150); });
         }
-    }
-    runTerminal();
+    })();
 
     // Scroll reveal
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.animate').forEach(function(el) { observer.observe(el); });
+    document.querySelectorAll('.anim').forEach(function(el) { obs.observe(el); });
 
-    // Counter animation for all stat numbers
-    var counterObserver = new IntersectionObserver(function(entries) {
+    // Counter animation
+    var cobs = new IntersectionObserver(function(entries) {
         entries.forEach(function(e) {
             if (!e.isIntersecting) return;
-            var el = e.target;
-            counterObserver.unobserve(el);
-            if (el.dataset.text) { el.textContent = el.dataset.text; return; }
+            var el = e.target; cobs.unobserve(el);
             var target = parseInt(el.dataset.target, 10);
-            var suffix = el.dataset.suffix || '';
             if (target === 0) { el.textContent = '0'; return; }
-            var duration = 1500, start = performance.now();
+            var dur = 1500, start = performance.now();
             (function step(now) {
-                var p = Math.min((now - start) / duration, 1), ease = 1 - Math.pow(1 - p, 3);
-                el.textContent = Math.round(ease * target).toLocaleString() + suffix;
+                var p = Math.min((now - start) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+                el.textContent = Math.round(ease * target).toLocaleString();
                 if (p < 1) requestAnimationFrame(step);
             })(performance.now());
         });
     }, { threshold: 0.3 });
-    document.querySelectorAll('.stat-number, .dash-stat-number').forEach(function(c) { counterObserver.observe(c); });
+    document.querySelectorAll('.counter').forEach(function(c) { cobs.observe(c); });
 
-    // Animate repo bars
-    var barObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-            if (!e.isIntersecting) return;
-            barObserver.unobserve(e.target);
-            e.target.style.width = e.target.dataset.width + '%';
-        });
+    // Repo bars
+    var bobs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { bobs.unobserve(e.target); e.target.style.width = e.target.dataset.width + '%'; } });
     }, { threshold: 0.2 });
-    document.querySelectorAll('.repo-bar-fill').forEach(function(b) { b.style.width = '0%'; barObserver.observe(b); });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-        a.addEventListener('click', function(e) { e.preventDefault(); var t = document.querySelector(this.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth' }); });
-    });
+    document.querySelectorAll('.repo-fill').forEach(function(b) { b.style.width = '0%'; bobs.observe(b); });
 })();
 </script>
 </body>
