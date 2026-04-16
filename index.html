@@ -191,6 +191,7 @@
         [data-theme="light"] .tag-delivery { background: rgba(26, 127, 55, 0.1); color: #15803d; }
         [data-theme="light"] .tag-default { background: rgba(101, 109, 118, 0.1); color: #656d76; }
         .personal .project-card { border-left-color: var(--accent-purple); }
+        .group-heading { font-family: var(--font-mono); font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem; }
 
         /* MENTORING */
         .mentoring-list { display: flex; flex-direction: column; gap: 1rem; }
@@ -375,6 +376,9 @@
         <div class="section-divider animate">/* architecture_and_leadership */</div>
         <h2 class="section-title animate">Architecture & Technical Leadership</h2>
         <p class="section-subtitle animate">Systems designed, rebuilt, and shipped.</p>
+
+        <!-- BLMS -->
+        <h3 class="group-heading animate"><span style="color:var(--accent-cyan)">&#9656;</span> BLMS &mdash; Buy Lead Management System</h3>
         <div class="projects-grid">
             <div class="project-card animate">
                 <h3><span class="arrow">&#9656;</span> .NET 8 & .NET 10 Upgrades</h3>
@@ -402,14 +406,9 @@
                 <div class="tags"><span class="tag tag-dotnet">C#</span><span class="tag tag-performance">Performance</span><span class="tag tag-default">Event-Driven</span><span class="tag tag-default">Buyer Filters</span></div>
             </div>
             <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> TransUnion Catalogue Import</h3>
-                <p>Took full ownership of the fragile TransUnion pipeline. Rebuilt it from the ground up &mdash; used to take days with DB timeouts and deadlocks. Now finishes in an hour. Replaced costly API calls with monthly SFTP imports.</p>
-                <div class="tags"><span class="tag tag-performance">Days &#8594; 1 Hour</span><span class="tag tag-dotnet">C#</span><span class="tag tag-pipeline">Pipeline</span><span class="tag tag-default">TransUnion</span></div>
-            </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> WeFin &mdash; Alerts & Contract Signing</h3>
-                <p>Implemented system alerts monitoring sales application volumes against thresholds. Integrated contract signing using request/response with MassTransit and Azure Service Bus. Went live with minimal issues.</p>
-                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Service Bus</span><span class="tag tag-default">WeFin</span></div>
+                <h3><span class="arrow">&#9656;</span> AI-Powered Support Agent</h3>
+                <p>Designed and built an AI support agent combining four MCP sources: Serena (code analysis), Elastic (logs), Dynatrace (monitoring), and custom MCP for BLMS API access. Produces root cause analysis, fixes, and WhatsApp replies. Posts to Teams with pattern recognition over time.</p>
+                <div class="tags"><span class="tag tag-ai">AI / MCP</span><span class="tag tag-elastic">Elastic</span><span class="tag tag-default">Dynatrace</span><span class="tag tag-default">Support Agent</span></div>
             </div>
             <div class="project-card animate">
                 <h3><span class="arrow">&#9656;</span> Remarketing API</h3>
@@ -417,19 +416,34 @@
                 <div class="tags"><span class="tag tag-delivery">Zero Fixes</span><span class="tag tag-dotnet">.NET</span><span class="tag tag-delivery">Rapid Delivery</span></div>
             </div>
             <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> Inspectify</h3>
+                <h3><span class="arrow">&#9656;</span> WeFin &mdash; Alerts & Contract Signing</h3>
+                <p>Implemented system alerts monitoring sales application volumes against thresholds. Integrated contract signing using request/response with MassTransit and Azure Service Bus. Went live with minimal issues.</p>
+                <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Service Bus</span><span class="tag tag-default">WeFin</span></div>
+            </div>
+        </div>
+
+        <!-- INSPECTIFY -->
+        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-purple)">&#9656;</span> Inspectify &mdash; Vehicle Inspection Platform</h3>
+        <div class="projects-grid">
+            <div class="project-card animate" style="border-left-color:var(--accent-purple);">
+                <h3><span class="arrow">&#9656;</span> Inspectify &mdash; Architecture & Launch</h3>
                 <p>Key role in architecting, designing, implementing, and taking Inspectify live within 1-2 months. Built with solid test coverage, clean code, and easy-to-onboard conventions. Production-ready quality at pace.</p>
                 <div class="tags"><span class="tag tag-dotnet">C#</span><span class="tag tag-architecture">Architecture</span><span class="tag tag-delivery">Fast Delivery</span></div>
             </div>
-            <div class="project-card animate">
-                <h3><span class="arrow">&#9656;</span> AI-Powered Support Agent</h3>
-                <p>Designed and built an AI support agent combining four MCP sources: Serena (code analysis), Elastic (logs), Dynatrace (monitoring), and custom MCP for BLMS API access. Produces root cause analysis, fixes, and WhatsApp replies. Posts to Teams with pattern recognition over time.</p>
-                <div class="tags"><span class="tag tag-ai">AI / MCP</span><span class="tag tag-elastic">Elastic</span><span class="tag tag-default">Dynatrace</span><span class="tag tag-default">Support Agent</span></div>
-            </div>
-            <div class="project-card animate">
+            <div class="project-card animate" style="border-left-color:var(--accent-purple);">
                 <h3><span class="arrow">&#9656;</span> MAHA Brake Test Integration</h3>
                 <p>Reverse-engineered German documentation from 1990s-era MAHA software. Built the ES_IN/ES_OUT file system integration with MassTransit Topics, subscriptions, and SQL filter rules per branch code. QR code scanning replaces manual processes.</p>
                 <div class="tags"><span class="tag tag-masstransit">MassTransit</span><span class="tag tag-azure">Topics & Subscriptions</span><span class="tag tag-ai">AI-Assisted</span><span class="tag tag-default">MAHA</span></div>
+            </div>
+        </div>
+
+        <!-- VEHICLE CATALOGUE -->
+        <h3 class="group-heading animate" style="margin-top:3rem;"><span style="color:var(--accent-orange)">&#9656;</span> Vehicle Catalogue &mdash; TransUnion Import Pipeline</h3>
+        <div class="projects-grid">
+            <div class="project-card animate" style="border-left-color:var(--accent-orange);">
+                <h3><span class="arrow">&#9656;</span> TransUnion Catalogue Import</h3>
+                <p>Took full ownership of the fragile TransUnion pipeline. Rebuilt it from the ground up &mdash; used to take days with DB timeouts and deadlocks. Now finishes in an hour. Replaced costly API calls with monthly SFTP imports.</p>
+                <div class="tags"><span class="tag tag-performance">Days &#8594; 1 Hour</span><span class="tag tag-dotnet">C#</span><span class="tag tag-pipeline">Pipeline</span><span class="tag tag-default">TransUnion</span></div>
             </div>
         </div>
     </div>
