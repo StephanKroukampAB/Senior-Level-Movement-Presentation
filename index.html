@@ -84,7 +84,7 @@
         /* NAV */
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 999; background: rgba(13, 17, 23, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-color); padding: 0.75rem 2rem; display: flex; align-items: center; gap: 1.5rem; transition: background var(--transition-speed), border-color var(--transition-speed); }
         [data-theme="light"] .nav { background: rgba(255, 255, 255, 0.85); }
-        .nav-logo { height: 28px; filter: var(--logo-filter); transition: filter var(--transition-speed); }
+        .nav-logo { height: 40px; filter: var(--logo-filter); transition: filter var(--transition-speed); }
         .nav-links { display: flex; gap: 1.25rem; list-style: none; margin-left: auto; margin-right: 3.5rem; }
         .nav-links a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); transition: color var(--transition-speed); }
         .nav-links a:hover { color: var(--accent-green); text-decoration: none; }
@@ -266,7 +266,9 @@
                 <div class="terminal-line" id="line-3" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-3"></span></div>
                 <div class="terminal-line terminal-output" id="out-3" style="display:none;"></div>
                 <div class="terminal-line" id="line-4" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-4"></span></div>
-                <div id="out-4" style="display:none;"></div>
+                <div class="terminal-line terminal-output" id="out-4" style="display:none;"></div>
+                <div class="terminal-line" id="line-5" style="display:none;"><span class="terminal-prompt">$</span> <span class="terminal-command" id="cmd-5"></span></div>
+                <div class="terminal-line terminal-output" id="out-5" style="display:none;"></div>
                 <span class="cursor" id="cursor"></span>
             </div>
         </div>
@@ -546,7 +548,8 @@
         { cmd: 'cmd-1', text: 'whoami', out: 'out-1', outText: 'Stephan Kroukamp' },
         { cmd: 'cmd-2', line: 'line-2', text: 'cat role.txt', out: 'out-2', outText: 'Senior Software Engineer Candidate @ Agile Bridge' },
         { cmd: 'cmd-3', line: 'line-3', text: 'az certifications --list', out: 'out-3', outText: '\u2713 AZ-900  \u2713 AZ-204  \u2713 AZ-400' },
-        { cmd: 'cmd-4', line: 'line-4', text: 'git log --oneline | wc -l', out: 'out-4', outText: '3,412 prod commits \u00b7 666 PRs shipped \u00b7 6 repositories' },
+        { cmd: 'cmd-4', line: 'line-4', text: 'cat project.txt', out: 'out-4', outText: 'We Buy Cars' },
+        { cmd: 'cmd-5', line: 'line-5', text: 'git log --oneline | wc -l', out: 'out-5', outText: '3,412 prod commits \u00b7 666 PRs shipped \u00b7 6 repositories' },
     ];
     function typeText(el, text, speed) {
         return new Promise(function(resolve) {
