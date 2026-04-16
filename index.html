@@ -184,20 +184,6 @@ body { font-family: var(--font); font-size: 14px; background: var(--bg); color: 
     </div>
 </section>
 
-<!-- STATS as code -->
-<section class="file-section">
-    <div class="editor">
-        <div class="code-block anim">
-            <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// stats.ts — all-time production numbers</span></span></div>
-            <div class="ln"><span class="ln-num">2</span><span class="ln-code"><span class="kw">const</span> <span class="var">prodCommits</span>: <span class="type">number</span> = <span class="counter" data-target="3412">0</span>;</span></div>
-            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsShipped</span>: <span class="type">number</span> = <span class="counter" data-target="666">0</span>;</span></div>
-            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsReviewed</span>: <span class="type">number</span> = <span class="counter" data-target="1074">0</span>;</span></div>
-            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="kw">const</span> <span class="var">workItemsClosed</span>: <span class="type">number</span> = <span class="counter" data-target="802">0</span>;</span></div>
-            <div class="ln"><span class="ln-num">6</span><span class="ln-code"><span class="kw">const</span> <span class="var">repositories</span>: <span class="type">number</span> = <span class="counter" data-target="6">0</span>;</span></div>
-        </div>
-    </div>
-</section>
-
 <!-- INTRO as block comment -->
 <section id="intro" class="file-section">
     <div class="editor">
@@ -240,34 +226,39 @@ body { font-family: var(--font); font-size: 14px; background: var(--bg); color: 
         <div class="code-block anim">
             <div class="ln"><span class="ln-num">1</span><span class="ln-code"><span class="cm">// devops.ts — production delivery dashboard (master branch)</span></span></div>
             <div class="ln"><span class="ln-num">2</span><span class="ln-code">&nbsp;</span></div>
-            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="kw">const</span> <span class="var">currentBranch</span> = <span class="str">"since-solid-movement"</span>; <span class="cm">// Jul 2024 — Apr 2026</span></span></div>
-            <div class="ln"><span class="ln-num">4</span><span class="ln-code">&nbsp;</span></div>
-            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
-            <div class="ln"><span class="ln-num">6</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1644">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">7</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="380">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">8</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="726">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">9</span><span class="ln-code ln-indent"><span class="var">repositories</span>: <span class="counter num" data-target="6">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">10</span><span class="ln-code">});</span></div>
-            <div class="ln"><span class="ln-num">11</span><span class="ln-code">&nbsp;</span></div>
-            <div class="ln"><span class="ln-num">12</span><span class="ln-code"><span class="cm">// commits by repository</span></span></div>
-        </div>
-        <div class="anim" style="padding: 0.25rem 0 0.25rem 3.5rem;">
-            <div class="repo-row"><span class="repo-name">"BLMS-API"</span><div class="repo-track"><div class="repo-fill c1" data-width="75"></div></div><span class="repo-ct">1,230</span></div>
-            <div class="repo-row"><span class="repo-name">"Inspectify"</span><div class="repo-track"><div class="repo-fill c2" data-width="16.4"></div></div><span class="repo-ct">270</span></div>
-            <div class="repo-row"><span class="repo-name">"IMS"</span><div class="repo-track"><div class="repo-fill c3" data-width="4.3"></div></div><span class="repo-ct">71</span></div>
-            <div class="repo-row"><span class="repo-name">"Core-Pkgs"</span><div class="repo-track"><div class="repo-fill c4" data-width="2.9"></div></div><span class="repo-ct">48</span></div>
-            <div class="repo-row"><span class="repo-name">"Chat-API"</span><div class="repo-track"><div class="repo-fill c5" data-width="1.5"></div></div><span class="repo-ct">25</span></div>
-        </div>
-        <div class="code-block anim">
-            <div class="ln"><span class="ln-num">13</span><span class="ln-code">&nbsp;</span></div>
-            <div class="ln"><span class="ln-num">14</span><span class="ln-code"><span class="kw">const</span> <span class="var">historicBranch</span> = <span class="str">"before-solid-movement"</span>; <span class="cm">// pre Jul 2024</span></span></div>
-            <div class="ln"><span class="ln-num">15</span><span class="ln-code">&nbsp;</span></div>
-            <div class="ln"><span class="ln-num">16</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
-            <div class="ln"><span class="ln-num">17</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1768">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">18</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="286">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="348">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">20</span><span class="ln-code ln-indent"><span class="var">workItemsClosed</span>: <span class="counter num" data-target="802">0</span>,</span></div>
-            <div class="ln"><span class="ln-num">21</span><span class="ln-code">});</span></div>
+            <div class="ln"><span class="ln-num">3</span><span class="ln-code"><span class="cm">// ─── all-time totals ───</span></span></div>
+            <div class="ln"><span class="ln-num">4</span><span class="ln-code"><span class="kw">const</span> <span class="var">prodCommits</span>: <span class="type">number</span> = <span class="counter num" data-target="3412">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">5</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsShipped</span>: <span class="type">number</span> = <span class="counter num" data-target="666">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">6</span><span class="ln-code"><span class="kw">const</span> <span class="var">prsReviewed</span>: <span class="type">number</span> = <span class="counter num" data-target="1074">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">7</span><span class="ln-code"><span class="kw">const</span> <span class="var">workItemsClosed</span>: <span class="type">number</span> = <span class="counter num" data-target="802">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">8</span><span class="ln-code"><span class="kw">const</span> <span class="var">repositories</span>: <span class="type">number</span> = <span class="counter num" data-target="6">0</span>;</span></div>
+            <div class="ln"><span class="ln-num">9</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">10</span><span class="ln-code"><span class="cm">// ─── since solid movement ───</span></span></div>
+            <div class="ln"><span class="ln-num">11</span><span class="ln-code"><span class="kw">const</span> <span class="var">currentBranch</span> = <span class="str">"since-solid-movement"</span>; <span class="cm">// Jul 2024 — Apr 2026</span></span></div>
+            <div class="ln"><span class="ln-num">12</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">13</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
+            <div class="ln"><span class="ln-num">14</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1644">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">15</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="380">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">16</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="726">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">17</span><span class="ln-code ln-indent"><span class="var">repositories</span>: <span class="counter num" data-target="6">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">18</span><span class="ln-code ln-indent"><span class="var">commitsByRepo</span>: {</span></div>
+            <div class="ln"><span class="ln-num">19</span><span class="ln-code ln-indent2"><span class="str">"BLMS-API"</span>: <span class="num">1230</span>,</span></div>
+            <div class="ln"><span class="ln-num">20</span><span class="ln-code ln-indent2"><span class="str">"Inspectify"</span>: <span class="num">270</span>,</span></div>
+            <div class="ln"><span class="ln-num">21</span><span class="ln-code ln-indent2"><span class="str">"IMS"</span>: <span class="num">71</span>,</span></div>
+            <div class="ln"><span class="ln-num">22</span><span class="ln-code ln-indent2"><span class="str">"Core-Pkgs"</span>: <span class="num">48</span>,</span></div>
+            <div class="ln"><span class="ln-num">23</span><span class="ln-code ln-indent2"><span class="str">"Chat-API"</span>: <span class="num">25</span>,</span></div>
+            <div class="ln"><span class="ln-num">24</span><span class="ln-code ln-indent">},</span></div>
+            <div class="ln"><span class="ln-num">25</span><span class="ln-code">});</span></div>
+            <div class="ln"><span class="ln-num">26</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">27</span><span class="ln-code"><span class="cm">// ─── before solid movement ───</span></span></div>
+            <div class="ln"><span class="ln-num">28</span><span class="ln-code"><span class="kw">const</span> <span class="var">historicBranch</span> = <span class="str">"before-solid-movement"</span>; <span class="cm">// pre Jul 2024</span></span></div>
+            <div class="ln"><span class="ln-num">29</span><span class="ln-code">&nbsp;</span></div>
+            <div class="ln"><span class="ln-num">30</span><span class="ln-code"><span class="fn">console</span>.<span class="fn">table</span>({</span></div>
+            <div class="ln"><span class="ln-num">31</span><span class="ln-code ln-indent"><span class="var">prodCommits</span>: <span class="counter num" data-target="1768">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">32</span><span class="ln-code ln-indent"><span class="var">prsShipped</span>: <span class="counter num" data-target="286">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">33</span><span class="ln-code ln-indent"><span class="var">prsReviewed</span>: <span class="counter num" data-target="348">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">34</span><span class="ln-code ln-indent"><span class="var">workItemsClosed</span>: <span class="counter num" data-target="802">0</span>,</span></div>
+            <div class="ln"><span class="ln-num">35</span><span class="ln-code">});</span></div>
         </div>
     </div>
 </section>
